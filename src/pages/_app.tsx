@@ -8,7 +8,7 @@ import { SocketProvider } from "src/components/socket/SocketContext";
 const MyApp: AppType = ({ Component, pageProps: { ...pageProps } }) => {
   return (
     <div>
-      {window !== undefined && (
+      {typeof window !== undefined && (
         <SocketProvider>
           {" "}
           <Component {...pageProps} />
