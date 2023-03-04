@@ -32,7 +32,7 @@ export const Navigation = (props: any) => {
     });
 
     socket.on("joinedRooms", (data: any) => {
-      console.log("joined??? -" + JSON.parse(data));
+      console.log("joined??? -" + JSON.stringify(data));
     });
     socket.on("connected", (data: any) => {
       console.log(data);
