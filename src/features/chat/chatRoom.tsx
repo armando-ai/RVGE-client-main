@@ -39,7 +39,7 @@ const ChatRoom = (props: any) => {
   };
   useEffect(() => {
     socket.on("messages", async (data: any) => {
-      console.log(data);
+      console.log("message received", data);
       await setChatMessages((prev) => [data]);
     });
 
@@ -54,7 +54,8 @@ const ChatRoom = (props: any) => {
     }, 500);
   };
   const sendMessage = async (message: string) => {
-    console.log("mayberoom", socket);
+    socket.emit("joinRooms", {});
+    // console.log("mayberoom", socket);
     const rawmessage = { roomId: props.room.id, message: message };
 
     socket.emit("message", rawmessage);
