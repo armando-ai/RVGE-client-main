@@ -25,8 +25,7 @@ const SocketProvider = ({ children }: SocketProviderProps) => {
     socket = io(`${process.env.NEXT_PUBLIC_WS_URL}`);
   }
 
-  socket.emit("joinRooms");
-
+  
   useEffect(() => {
     return () => {
       socket.disconnect();
