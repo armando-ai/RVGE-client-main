@@ -15,7 +15,7 @@ type SocketProviderProps = {
 
 const SocketProvider = ({ children }: SocketProviderProps) => {
   let socket: any;
-  if (localStorage !== undefined) {
+  if (typeof localStorage !== "undefined") {
     socket = io(`${process.env.NEXT_PUBLIC_WS_URL}`, {
       extraHeaders: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
