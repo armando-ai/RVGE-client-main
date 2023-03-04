@@ -14,11 +14,17 @@ type SocketProviderProps = {
 };
 
 const SocketProvider = ({ children }: SocketProviderProps) => {
-  const socket = io(`${process.env.NEXT_PUBLIC_WS_URL}`, {
-    extraHeaders: {
-      authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-    },
-  });
+  let socket: any;
+  if (localStorage !== undefined) {
+    socket = io(`${process.env.NEXT_PUBLIC_WS_URL}`, {
+      extraHeaders: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    });
+  } else {
+    socket = io(`${process.env.NEXT_PUBLIC_WS_URL}`);
+  }
+
   socket.emit("joinRooms");
 
   useEffect(() => {
