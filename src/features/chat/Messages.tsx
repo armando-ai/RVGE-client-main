@@ -5,6 +5,7 @@ import {
   ChatBubbleBottomCenterTextIcon,
 } from "@heroicons/react/24/outline";
 import RoomCard from "./roomCard";
+import { useSocket } from "src/components/socket/SocketContext";
 
 const Messages = (props: any) => {
   const [openChats, setOpenChats] = useState(false);
@@ -13,6 +14,8 @@ const Messages = (props: any) => {
   //     window.alert("hello");
   //   });
   // }, []);
+  const socket = useSocket();
+  socket.emit("joinRooms");
   return (
     <div
       id="messageTab"

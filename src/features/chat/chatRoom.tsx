@@ -55,7 +55,7 @@ const ChatRoom = (props: any) => {
   };
   const sendMessage = async (message: string) => {
     const rawmessage = { roomId: props.room.id, message: message };
-    console.log(rawmessage);
+
     socket.emit("message", rawmessage);
 
     await setChatMessages((prev) => [...prev, rawmessage]);
