@@ -87,7 +87,7 @@ const ChatRoom = (props: any) => {
   const [ChatMessages, setChatMessages] = useState<any[]>([]);
 
   const elements = ChatMessages.map((message: any) =>
-    message.userId === props.room.users[0].id ? (
+    message.username === props.room.users[0].username ? (
       <OtherChat message={message.message}></OtherChat>
     ) : (
       <UserChat message={message.message}></UserChat>

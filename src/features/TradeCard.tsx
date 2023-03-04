@@ -9,21 +9,13 @@ import {
 } from "@heroicons/react/24/outline";
 import io from "socket.io-client";
 import Link from "next/link";
+import { useSocket } from "src/components/socket/SocketContext";
 
 const TradeCard = (props: any) => {
+  const socket = useSocket();
   async function createRoom() {
     await getToken();
     const userId = props.user.id;
-
-    let socket = io(`${process.env.NEXT_PUBLIC_WS_URL}`, {
-      extraHeaders: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    });
-    socket.on("connect", () => {
-      console.log("connected", socket);
-      socket.emit("joinRooms");
-    });
 
     const data = {
       userId: userId,
@@ -46,7 +38,7 @@ const TradeCard = (props: any) => {
     socket.on("joinedRooms", (data: any) => {
       console.log("joined??? -" + data);
     });
-    socket.on("connect_error", (error) => {
+    socket.on("connect_error", (error: any) => {
       console.error("connect error", error);
     });
     // socket.on("messages", async (data: any) => {

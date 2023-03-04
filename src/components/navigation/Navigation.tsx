@@ -12,6 +12,7 @@ import RoomCard from "src/features/chat/roomCard";
 import Messaging from "src/features/chat/Messages";
 import ChatRoom from "src/features/chat/chatRoom";
 import { io } from "socket.io-client";
+import { useSocket } from "../socket/SocketContext";
 
 export const Navigation = (props: any) => {
   const [selected, setSelected] = useState("Home");
@@ -19,28 +20,20 @@ export const Navigation = (props: any) => {
   const date = new Date();
 
   const [chatRoom, setChatRoom] = useState<any>([]);
+  const socket = useSocket();
   useEffect(() => {
-    let socket = io(`${process.env.NEXT_PUBLIC_WS_URL}`, {
-      extraHeaders: {
-        authorization: `Bearer ${localStorage?.getItem("accessToken")}`,
-      },
-    });
-
     socket.on("createdRoom", (data: any) => {
-
       console.log("createRoom", data);
       setChatRoom((prev: any) => [
         <ChatRoom delRoom={setChatRoom} room={data}></ChatRoom>,
       ]);
-      socket.emit("joinRooms")
+      socket.emit("joinRooms");
     });
-    
+
     socket.on("joinedRooms", (data: any) => {
       console.log("joined??? -" + data);
     });
-    socket.on("connected", (data) => {
-
-    });
+    socket.on("connected", (data: any) => {});
 
     return () => {
       socket.disconnect();
