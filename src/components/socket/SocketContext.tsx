@@ -14,8 +14,11 @@ type SocketProviderProps = {
 };
 
 const SocketProvider = ({ children }: SocketProviderProps) => {
-  const socket = io(`${process.env.NEXT_PUBLIC_WS_URL}`, {});
-
+  const socket = io(`${process.env.NEXT_PUBLIC_WS_URL}`, {
+    extraHeaders: {
+      authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+  });
   socket.emit("joinRooms");
 
   useEffect(() => {

@@ -7,10 +7,14 @@ import { SocketProvider } from "src/components/socket/SocketContext";
 
 const MyApp: AppType = ({ Component, pageProps: { ...pageProps } }) => {
   return (
-    <SocketProvider>
-      {" "}
-      <Component {...pageProps} />
-    </SocketProvider>
+    <div>
+      {window !== undefined && (
+        <SocketProvider>
+          {" "}
+          <Component {...pageProps} />
+        </SocketProvider>
+      )}
+    </div>
   );
 };
 
