@@ -39,7 +39,7 @@ export const NavigationLinks = [
   },
   {
     name: "Sign Out",
-    href: "/auth/desktopSignin",
+    href: "/auth",
     icon: SignOutIcon({ className: LinkStyles })
 
   }
