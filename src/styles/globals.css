@@ -1,0 +1,348 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  * {
+    user-select: none;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+      sans-serif;
+    @apply m-0 box-border overflow-x-hidden p-0;
+    scroll-behavior: smooth;
+
+
+  }
+ ::-webkit-scrollbar{
+    background-color:#f5f5f5;
+  }
+::-webkit-scrollbar-thumb {
+   background-color: #282c34;
+   border-radius:10px;
+  }
+  .skill{
+    display: flex;
+    height:6vh;
+    width:100%;
+
+  }
+}
+
+@layer components {
+  .hide--clients {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out;
+    /* @apply opacity-0 duration-700 pointer-events-none; */
+  }
+
+
+  .show--clients {
+    @apply opacity-100 duration-700;
+  }
+
+  .selected--client {
+    animation: go-to-top 0.7s ease-in;
+  }
+
+  .height-animation {
+    animation: change-height 0.7s ease-in;
+  }
+
+  .body {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow-y: hidden;
+  }
+
+  .content-box {
+    border-radius: 8px;
+    height: 75%;
+    overflow-y: hidden;
+    transition: 0.7s;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    top: 12.5%;
+    margin-inline: auto;
+    width: 90%;
+  }
+  .border-1{
+    border-right:0.5vw solid rgb(15 23 42);
+    border-top:0.5vw solid rgb(15 23 42);
+    border-bottom:0.5vw solid rgb(15 23 42);
+  }
+  .smooth{
+    transition:0.7s;
+  }
+  .start-left{
+    animation: start-left 1s  ;
+    transition: 0.7s;
+    animation-delay: .001s;
+  }
+  .start-left2{
+    animation: start-left2 1s;
+    transition: 0.7s;
+
+    animation-fill-mode: forwards;
+  }
+
+  .color{
+    background-color:rgb(203 213 225 / 0.9);
+    transition: 0.7s;;
+  }
+  .color2{
+    background-color: rgb(184 194 207);
+    transition: 0.7s;;
+  }
+  .color4{
+    background-color: rgb(164 174 188);
+    transition: 0.7s;;
+  }
+  .color3{
+    background-color:rgb(15 23 42)!important;
+    opacity: 1;
+  }
+  .show-sign-in{
+    animation: grow-height 1s;
+  }
+  @keyframes grow-height {
+    0%{
+      top:100%;
+
+    }
+    100%{
+      top:0%;
+    }
+
+  }
+  .content-pane {
+    width: 50%;
+    height: 100%;
+   top:0;
+    background-color: rgb(203 213 225 / 0.9);
+    position: relative;
+
+    display: flex;
+    transition: 0.7s;
+    transition-timing-function: ease-out;
+    flex-direction: column;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+
+
+  }
+
+
+
+
+  .mi-auto {
+    margin-inline: auto;
+
+  }
+
+  .input-box {
+    position: relative;
+
+    padding: 1%;
+    margin-top: 3%;
+    border-top: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-bottom:2px solid #050505;
+    background-color: transparent;
+    height: 25%;
+    max-height: 30%;
+    overflow: hidden;
+    border-radius: 4px;
+    width: 60%;
+    transition: 0.2s ease-in-out;
+
+  }
+
+  .input-box:focus-within {
+
+    border-left: 2px solid #050505;
+    border-top: 2px solid #050505;
+    border-right: 2px solid #050505;
+    border-bottom:2px solid #050505;
+
+
+  }
+  .smooth2{
+    transition: 0.5s;
+  }
+
+
+  .input:focus::placeholder {
+    transition: 1s;
+    opacity: 0;
+  }
+
+  .input {
+    outline: none;
+    font-size: medium;
+    margin-left: 1%;
+    background-color: transparent;
+    padding: .5%;
+    padding-left: 1%;
+
+    width: 85%;
+  }
+
+  .login-button {
+    height: 30%;
+    max-height: 30%;
+    width: 60%;
+    border:.15vw solid #000;
+
+    color: black/0.3;
+
+    margin-top: 3%;
+    transition: all 0.3s;;
+    line-height: 24px;
+    padding: .8%;
+
+
+  }
+
+
+  .login-button:hover {
+
+    color: #ffffff;
+
+
+
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+
+    @apply bg-slate-900/90
+  }
+
+  .move-down {
+    animation: move-down 1s ;
+  }
+  .dropdown-container {
+    width: 60%;
+    height: 50%;
+    margin-inline: auto;
+    margin-top:10%;
+    position: relative;
+    overflow: visible;
+  }
+
+  .selected-container {
+    display: flex;
+    width: 100%;
+    margin-inline: auto;
+    flex-wrap:wrap;
+    align-items: center;
+    border: 4px solid gray;
+    padding: 1%;
+
+  }
+
+  .selected-item {
+    background-color: lightgray;
+    padding: 5px 10px;
+    margin: 5px;
+
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+
+  }
+
+  .input-field {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 16px;
+
+  }
+
+  .dropdown-list {
+    transition:0.5s;
+
+    animation: fade 1s;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid gray;
+    border-top: none;
+
+    padding: 10px 0;
+    z-index: 1;
+  }
+
+  .dropdown-list li {
+    list-style: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size:x-large!important;
+  }
+
+  .dropdown-list li:hover {
+    background-color: lightgray;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  .card-body {
+    display: flex;
+    justify-content: space-between;
+    overflow-y: auto;
+  }
+  @keyframes flying {
+    0% {
+      transform: rotate(0) translate(0, 0);
+    }
+    100% {
+      transform: rotate(-45deg) translate(80vw, -100vh);
+      opacity: 0;
+    }
+  }
+
+  .animate-flying {
+    animation-name: flying;
+    animation-duration: 5s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes rotation2 {
+    from {
+      bottom:-20vh;
+    }
+    to {
+      bottom:10vh;
+    }
+  }
+
+  @keyframes move-down {
+    from {
+      top: -100%;
+    }
+    to {
+      top: 0;
+    }
+  }
+
+  @keyframes fade {
+    from{
+      opacity:0;
+    }
+    to{
+      opacity: 1;
+    }
+  }
+}

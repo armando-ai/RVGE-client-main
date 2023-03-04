@@ -1,0 +1,253 @@
+.content{
+    height:100vh;
+    width:90%;
+    margin-left: auto;
+    margin-right: 1%;
+    padding:1%;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    display: flex;
+}
+
+
+.header {
+    position:relative;
+    text-align:center;
+    width: 100%;
+    background: linear-gradient(60deg, rgb(203 213 225 / 0.9) 0%,
+    #0f172a 100%);
+    color:white;
+    border-radius: 30px;
+    overflow: hidden;
+  }
+  .inner-header {
+    height:15vh;
+    width:100%;
+    margin: 0;
+    padding: 0;
+  }
+  .flex { /*Flexbox for containers*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .waves {
+    position:relative;
+    width: 100%;
+    height:15vh;
+    margin-bottom:-7px; /*Fix for safari gap*/
+
+  }
+
+
+  /* Animation */
+
+  .parallax > use {
+    animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+  }
+  .parallax > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+  }
+  .parallax > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+  }
+  .parallax > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+  }
+  .parallax > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+  }
+  @keyframes move-forever {
+    0% {
+     transform: translate3d(-90px,0,0);
+    }
+    100% {
+      transform: translate3d(85px,0,0);
+    }
+  }
+  /*Shrinking for mobile*/
+  .userDesc{
+    width:90%;
+    border-radius: 20px;
+    padding: 2%;
+    height:15%;
+    background-color:#ccccccd3;
+    position: relative;
+    top:-7.5vh;
+    display:flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .bio p{height: auto;overflow: hidden; padding:1%;}
+  .bio{
+    color: #f5f5f5;
+    @apply bg-slate-900;
+    display: flex;
+    width: 60%;
+    line-height: 24px;
+    letter-spacing: 1px;
+    position: relative;
+    top:-11%;
+
+    border-radius: 20px;
+    left:8%;
+
+    height: auto;
+    padding: 2%;
+
+  }
+  .userDesc h1{
+     font-size: x-large;
+     font-weight: 600;
+     margin-left: 2.5%;
+  }
+  .editbio{
+    position:absolute;
+    top:36.5%;
+    right:13%;
+    cursor: pointer;
+  }
+  .row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    top:-5%;
+
+  }
+  .rowbox{
+    height:auto;
+    width:30%;
+    padding: 2%;
+    overflow: hidden;
+    display: flex;
+    margin-left: 1%;
+    margin-right: 1%;
+    color: #f5f5f5;
+     @apply bg-slate-900;
+    border-radius: 20px;
+  }
+  .add{
+    cursor: cell;
+    margin-left: auto;
+  }
+  .rowbox h2{
+    font-weight: 500;
+    font-size: large;
+  }
+  .dialog-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    filter: blur(0)!important;
+    align-items: center;
+    z-index: 999;
+    opacity: 0;
+    animation: fade 0.2s ease-in forwards;
+  }
+  @keyframes fade {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+  .dialog {
+    position: relative;
+    height:80vh;
+    width: 150vh;
+    filter: blur(0)!important;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    opacity: 0;
+
+    animation: fade 0.2s forwards;
+  }
+
+  .dialog-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem;
+    height:12vh;
+    overflow: hidden;
+
+    background-color: rgb(203 213 225 / 0.9);
+    color: white;
+  }
+
+  .dialog-header h2 {
+    color: #0f172a;
+    font-size: 2.5rem;
+    margin: 0;
+    margin-left: 2%;
+  }
+
+  .dialog-body {
+
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dialog-container.show {
+    opacity: 1;
+  }
+
+  .dialog.show {
+    opacity: 1;
+
+  }
+
+  .close-btn {
+    border: none;
+    background-color: transparent;
+    font-size: 0.5rem;
+    width: 4vw;
+    color: #0f172a;
+    cursor: pointer;
+    font-weight: 100;
+    margin-left: auto;
+    margin-right: 2%;
+    outline: none;
+  }
+  #games,#messages,#messageRooms,#games::-webkit-scrollbar{
+    background-color:transparent;
+  }
+  #games::-webkit-scrollbar-thumb {
+   background-color: #e7eaf1;
+   border-radius:10px;
+  }
+  #input::-webkit-scrollbar{
+    background-color:transparent;
+    cursor: grabbing!important;
+  }
+ #input::-webkit-scrollbar-thumb{
+    cursor: grabbing!important;
+  }
