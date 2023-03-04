@@ -22,6 +22,7 @@ const ChatRoom = (props: any) => {
     }
   };
   const socket = useSocket();
+  socket.emit("joinRooms");
   const handleInputChange = (event: any) => {
     setValue(event.target.value);
 
