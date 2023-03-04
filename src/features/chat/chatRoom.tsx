@@ -9,9 +9,7 @@ import UserChat from "./UserChat";
 import OtherChat from "./OtherChat";
 import { io } from "socket.io-client";
 
-
 const ChatRoom = (props: any) => {
-  
   const [openChats, setOpenChats] = useState(true);
   const [value, setValue] = useState("");
   const handleKeyDown = async (
@@ -58,6 +56,16 @@ const ChatRoom = (props: any) => {
     }, 500);
   };
   const sendMessage = async (message: string) => {
+    let socket = io(`${process.env.NEXT_PUBLIC_WS_URL}`, {
+      extraHeaders: {
+        authorization: `Bearer ${localStorage?.getItem("accessToken")}`,
+      },
+    });
+    const rawmessage = { roomId: props.room.id, message: message };
+    console.log(rawmessage);
+    socket.emit("message", "" + rawmessage);
+
+    await setChatMessages((prev) => [...prev, rawmessage]);
     await setValue("");
     var text = document.getElementById("txt");
     if (text !== null) {
@@ -69,14 +77,6 @@ const ChatRoom = (props: any) => {
       text.style.height = "";
       text.style.height = text.scrollHeight + "px";
     }
-    let socket = io(`${process.env.NEXT_PUBLIC_WS_URL}`, {
-      extraHeaders: {
-        authorization: `Bearer ${localStorage?.getItem("accessToken")}`,
-      },
-    });
-    socket.emit("message", "" + message);
-
-    await setChatMessages((prev) => [...prev, message]);
 
     var scroll = document.getElementById("messages");
     if (scroll !== null) {

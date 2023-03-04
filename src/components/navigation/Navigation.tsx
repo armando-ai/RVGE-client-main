@@ -26,9 +26,15 @@ export const Navigation = (props: any) => {
       },
     });
 
-    socket.on("messages", async (data: any) => {
-      console.log(data);
+    socket.on("createdRoom", (data: any) => {
+
+      console.log("createRoom", data);
+      setChatRoom((prev: any) => [
+        <ChatRoom delRoom={setChatRoom} room={data}></ChatRoom>,
+      ]);
+      socket.emit("joinRooms")
     });
+    
     socket.on("joinedRooms", (data: any) => {
       console.log("joined??? -" + data);
     });
