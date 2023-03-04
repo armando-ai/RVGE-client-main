@@ -40,7 +40,7 @@ const ChatRoom = (props: any) => {
   useEffect(() => {
     socket.on("messages", async (data: any) => {
       console.log("message received", data);
-      await setChatMessages((prev) => [data]);
+      setChatMessages((prev) => [...prev, data]);
     });
 
     updateHeight();
