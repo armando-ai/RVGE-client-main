@@ -33,7 +33,9 @@ export const Navigation = (props: any) => {
     socket.on("joinedRooms", (data: any) => {
       console.log("joined??? -" + data);
     });
-    socket.on("connected", (data: any) => {});
+    socket.on("connected", (data: any) => {
+      console.log(data);
+    });
 
     return () => {
       socket.disconnect();
