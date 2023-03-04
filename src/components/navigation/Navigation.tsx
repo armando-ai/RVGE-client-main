@@ -24,7 +24,6 @@ export const Navigation = (props: any) => {
 
   useEffect(() => {
     socket.on("createdRoom", (data: any) => {
-
       console.log("mayberoom", socket);
       console.log("createRoom", data);
       setChatRoom((prev: any) => [
@@ -33,7 +32,7 @@ export const Navigation = (props: any) => {
     });
 
     socket.on("joinedRooms", (data: any) => {
-      console.log("joined??? -" + data);
+      console.log("joined??? -" + JSON.parse(data));
     });
     socket.on("connected", (data: any) => {
       console.log(data);
