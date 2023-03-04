@@ -26,12 +26,14 @@ export const Navigation = (props: any) => {
       },
     });
 
-
+    socket.on("messages", async (data: any) => {
+      console.log(data);
+    });
     socket.on("joinedRooms", (data: any) => {
       console.log("joined??? -" + data);
     });
     socket.on("connected", (data) => {
-      
+
     });
 
     return () => {

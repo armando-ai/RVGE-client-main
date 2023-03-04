@@ -22,7 +22,7 @@ const TradeCard = (props: any) => {
     });
     socket.on("connect", () => {
       console.log("connected", socket);
-      socket.emit("joinRooms");
+
     });
 
     const data = {
@@ -32,7 +32,7 @@ const TradeCard = (props: any) => {
     console.log(userId);
 
     socket.emit("createRoom", data);
-
+    socket.emit("joinRooms");
     socket.on("createdRoom", (data: any) => {
       console.log("createRoom", data);
       const message = { roomId: data.id, message: "fuck you" };
@@ -46,9 +46,11 @@ const TradeCard = (props: any) => {
     socket.on("joinedRooms", (data: any) => {
       console.log("joined??? -" + data);
     });
+
     socket.on("connect_error", (error) => {
       console.error("connect error", error);
     });
+
     socket.on("messages", async (data: any) => {
       console.log(data);
     });
