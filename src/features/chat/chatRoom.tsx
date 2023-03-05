@@ -79,13 +79,13 @@ const ChatRoom = (props: any) => {
   };
   const [ChatMessages, setChatMessages] = useState<any[]>([]);
 
-  if (props.room.messages.length > 0) {
-    setChatMessages((prev) => [...prev, props.room.messages]);
+  if (props.room.messages.length > 0 && ChatMessages.length === 0) {
+    setChatMessages((prev) => [props.room.messages]);
     console.log(props.room);
   }
 
   const elements = ChatMessages.map((message: any) => {
-    console.log(props.room);
+    console.log(ChatMessages);
     console.log("wtf is this data - ", message);
     return message.user.username === props.room.users[0].username ? (
       <OtherChat message={message.message}></OtherChat>

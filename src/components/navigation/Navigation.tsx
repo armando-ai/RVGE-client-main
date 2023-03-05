@@ -24,35 +24,20 @@ export const Navigation = (props: any) => {
 
   useEffect(() => {
     socket.on("createdRoom", (data: any) => {
-      
       setChatRoom((prev: any) => [
         <ChatRoom delRoom={setChatRoom} room={data}></ChatRoom>,
       ]);
-
     });
-
-
 
     return () => {
       socket.disconnect();
     };
   }, []);
 
-
-  // function delChat(game: any) {
-  //   chats.splice(
-  //     chats.findIndex((value: any) => value.id + "".includes(game + "")),
-  //     1
-  //   );
-  //   console.log(chats);
-  //   setChat(chats);
-
-  //   //send del request for this game here
-  // }
   const activeChats = [{}];
   return (
     <div>
-      <Messaging setChatRoom={setChatRoom}  ></Messaging>
+      <Messaging setChatRoom={setChatRoom}></Messaging>
 
       {chatRoom}
 
