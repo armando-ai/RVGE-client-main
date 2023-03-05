@@ -40,10 +40,11 @@ const ChatRoom = (props: any) => {
   useEffect(() => {
     socket.on("messages", async (data: any) => {
       console.log("message received", data);
-      setChatMessages((prev) => [...prev, data]);
+      await setChatMessages((prev) => [...prev, data]);
+      updateHeight();
     });
 
-    updateHeight();
+
   }, []);
   const updateHeight = () => {
     setTimeout(() => {
@@ -91,7 +92,7 @@ const ChatRoom = (props: any) => {
         <UserChat message={message.message}></UserChat>
       );
     } else {
-      return message.from.username === props.room.users[0].username ? (
+      return message.from === props.room.users[0].username ? (
         <OtherChat message={message.message}></OtherChat>
       ) : (
         <UserChat message={message.message}></UserChat>
