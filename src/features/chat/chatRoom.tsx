@@ -78,7 +78,7 @@ const ChatRoom = (props: any) => {
     }
   };
 
-  const [ChatMessages, setChatMessages] = useState<any[]>([{}]);
+  const [ChatMessages, setChatMessages] = useState<any[]>([]);
 
   const elements = ChatMessages.map((message: any) =>
     message.username === props.room.users[0].username ? (

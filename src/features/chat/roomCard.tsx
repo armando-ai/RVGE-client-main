@@ -55,13 +55,17 @@ const RoomCard = (props: any) => {
           src={icon}
         />
         <div className="mr-auto flex flex-col ">
-          <h1 className="mr-auto">{props.chat.from}</h1>
-          <p className="mr-auto text-xs">{props.chat.lastMessage.message}</p>
+          <h1 className="mr-auto">{props.chat.users[0].username}</h1>
+          {props.chat.messages.length !== 0 && (
+            <p className="mr-auto text-xs">{props.chat.messages[0].message}</p>
+          )}
         </div>
         {del === false ? (
-          <p className="m-1 mb-auto text-sm">
-            {checkDateString(props.chat.lastMessage.createdAt)}
-          </p>
+          props.chat.messages.length !== 0 && (
+            <p className="m-1 mb-auto text-sm">
+              {checkDateString(props.chat.messages[0].createdAt)}
+            </p>
+          )
         ) : (
           <svg
             xmlns="http://www.w3.org/2000/svg"
