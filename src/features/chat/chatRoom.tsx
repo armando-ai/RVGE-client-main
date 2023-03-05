@@ -60,7 +60,6 @@ const ChatRoom = (props: any) => {
 
     socket.emit("message", rawmessage);
 
-    setChatMessages((prev) => [...prev, rawmessage]);
     await setValue("");
     var text = document.getElementById("txt");
     if (text !== null) {

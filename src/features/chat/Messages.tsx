@@ -8,14 +8,31 @@ import RoomCard from "./roomCard";
 import { useSocket } from "src/components/socket/SocketContext";
 
 const Messages = (props: any) => {
+  const socket = useSocket();
   const [openChats, setOpenChats] = useState(false);
+  const [chats, setChats] = useState<any>();
   // useEffect(() => {
   //   document.addEventListener("click", () => {
   //     window.alert("hello");
   //   });
   // }, []);
-  const socket = useSocket();
+
   socket.emit("joinRooms");
+
+  useEffect(() => {
+    socket.on("joinedRooms", (data: any) => {
+      console.log(JSON.stringify(data));
+      setChats(JSON.stringify(data));
+    });
+    socket.on("connected", (data: any) => {
+      console.log(data);
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
   return (
     <div
       id="messageTab"
@@ -40,7 +57,7 @@ const Messages = (props: any) => {
 
       <div id="messageRooms" className="h-[52vh] overflow-y-auto">
         {openChats === true &&
-          props.chats.map((chat: any) => <RoomCard chat={chat} />)}
+          chats.map((chat: any) => <RoomCard chat={chat} />)}
       </div>
     </div>
   );

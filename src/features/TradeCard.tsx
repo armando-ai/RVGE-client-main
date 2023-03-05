@@ -16,12 +16,10 @@ const TradeCard = (props: any) => {
   async function createRoom() {
     await getToken();
     const userId = props.user.id;
-    
+
     const data = {
       userId: userId,
     };
-
-    console.log(userId);
 
     socket.emit("createRoom", data);
 
