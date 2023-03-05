@@ -29,6 +29,7 @@ const Messages = (props: any) => {
       socket.disconnect();
     };
   }, []);
+  // const [fetch, setfetch] = useState(second)
   if (openChats) {
     socket.emit("joinRooms", {});
   }

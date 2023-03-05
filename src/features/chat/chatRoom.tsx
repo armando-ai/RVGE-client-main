@@ -77,11 +77,14 @@ const ChatRoom = (props: any) => {
       scroll.scrollTop = scroll.scrollHeight - scroll.clientHeight;
     }
   };
-
   const [ChatMessages, setChatMessages] = useState<any[]>([]);
 
+  if (props.room.messages.length > 0) {
+    setChatMessages((prev) => [...prev, props.room.messages]);
+  }
+
   const elements = ChatMessages.map((message: any) =>
-    message.username === props.room.users[0].username ? (
+    message.user.username === props.room.users[0].username ? (
       <OtherChat message={message.message}></OtherChat>
     ) : (
       <UserChat message={message.message}></UserChat>
