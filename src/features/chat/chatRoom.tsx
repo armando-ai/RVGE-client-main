@@ -45,10 +45,12 @@ const ChatRoom = (props: any) => {
     });
   }, []);
   const updateHeight = () => {
-    var scroll = document.getElementById("messages");
-    if (scroll !== null) {
-      scroll.scrollTop = scroll.scrollHeight - scroll.clientHeight;
-    }
+    setTimeout(() => {
+      var scroll = document.getElementById("messages");
+      if (scroll !== null) {
+        scroll.scrollTop = scroll.scrollHeight - scroll.clientHeight;
+      }
+    }, 250);
   };
   const sendMessage = async (message: string) => {
     // socket.emit("joinRooms", {});
