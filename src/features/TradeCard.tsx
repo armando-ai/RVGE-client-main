@@ -22,30 +22,6 @@ const TradeCard = (props: any) => {
     };
     console.log(data);
     socket.emit("createRoom", data);
-
-    // socket.on("createdRoom", (data: any) => {
-    //   console.log("createRoom", data);
-    //   const message = { roomId: data.id, message: "fuck you" };
-    //   socket.emit("message", message);
-
-    //   // setChatRoom((prev: any) => [
-    //   //   <ChatRoom delRoom={setChatRoom} room={data}></ChatRoom>,
-    //   // ]);
-    // });
-
-    socket.on("joinedRooms", (data: any) => {
-      console.log("joined??? -" + data);
-    });
-    socket.on("connect_error", (error: any) => {
-      console.error("connect error", error);
-    });
-    // socket.on("messages", async (data: any) => {
-    //   console.log(data);
-    // });
-
-    socket.on("connect_timeout", () => {
-      console.error("connect timeout");
-    });
   }
 
   return (

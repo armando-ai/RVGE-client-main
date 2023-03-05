@@ -19,8 +19,9 @@ const Messages = (props: any) => {
 
   useEffect(() => {
     socket.on("joinedRooms", (data: any) => {
-      console.log(JSON.stringify(data));
-      setChats(JSON.stringify(data));
+      const chatSessions = JSON.stringify(data);
+      console.log(chatSessions, chatSessions.length);
+      setChats(chatSessions);
     });
 
     return () => {
@@ -53,9 +54,9 @@ const Messages = (props: any) => {
       </div>
 
       <div id="messageRooms" className="h-[52vh] overflow-y-auto">
-        {openChats === true &&
+        {/* {openChats === true &&
           chats.length !== 0 &&
-          chats.map((chat: any) => <RoomCard chat={chat} />)}
+          chats.map((chat: any) => <RoomCard chat={chat} />)} */}
       </div>
     </div>
   );

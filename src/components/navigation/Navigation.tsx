@@ -28,12 +28,10 @@ export const Navigation = (props: any) => {
       setChatRoom((prev: any) => [
         <ChatRoom delRoom={setChatRoom} room={data}></ChatRoom>,
       ]);
-      
+
     });
 
-    socket.on("joinedRooms", (data: any) => {
-      console.log("joined??? -" + JSON.stringify(data));
-    });
+   
 
     return () => {
       socket.disconnect();
