@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import icon from "public/UserIcon.png";
 import ChatRoom from "./chatRoom";
-import { request } from "src/utils";
+import { getToken, request } from "src/utils";
 const RoomCard = (props: any) => {
   const [del, setDel] = useState(false);
   function checkDateString(dateString: string) {
@@ -37,10 +37,12 @@ const RoomCard = (props: any) => {
     }
   }
   const createCurrentRoom = async () => {
+    await getToken();
     const data = await request("/getroom/" + props.chat.id, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     });
     props.setChatRoom((prev: any) => [
