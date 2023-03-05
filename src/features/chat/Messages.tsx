@@ -17,16 +17,14 @@ const Messages = (props: any) => {
   //   });
   // }, []);
 
-  socket.emit("joinRooms");
+
 
   useEffect(() => {
     socket.on("joinedRooms", (data: any) => {
       console.log(JSON.stringify(data));
       setChats(JSON.stringify(data));
     });
-    socket.on("connected", (data: any) => {
-      console.log(data);
-    });
+
 
     return () => {
       socket.disconnect();
