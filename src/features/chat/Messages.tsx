@@ -30,8 +30,10 @@ const Messages = (props: any) => {
     };
   }, []);
   // const [fetch, setfetch] = useState(second)
-  if (openChats) {
+  const [first, setFirst] = useState(false);
+  if (openChats && first == false) {
     socket.emit("joinRooms", {});
+    setFirst(true);
   }
   return (
     <div

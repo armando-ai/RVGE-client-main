@@ -258,3 +258,7 @@
   #messages::-webkit-scrollbar{
     background-color:transparent!important;
   }
+
+  textarea{
+    outline:none;
+  }
