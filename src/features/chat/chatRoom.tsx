@@ -84,11 +84,19 @@ const ChatRoom = (props: any) => {
   }
 
   const elements = ChatMessages.map((message: any) => {
-    return message.user.username === props.room.users[0].username ? (
-      <OtherChat message={message.message}></OtherChat>
-    ) : (
-      <UserChat message={message.message}></UserChat>
-    );
+    if (message.user) {
+      return message.user.username === props.room.users[0].username ? (
+        <OtherChat message={message.message}></OtherChat>
+      ) : (
+        <UserChat message={message.message}></UserChat>
+      );
+    } else {
+      return message.from.username === props.room.users[0].username ? (
+        <OtherChat message={message.message}></OtherChat>
+      ) : (
+        <UserChat message={message.message}></UserChat>
+      );
+    }
   });
 
   function delChat(id: string) {
