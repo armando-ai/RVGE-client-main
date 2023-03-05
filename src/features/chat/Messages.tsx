@@ -10,7 +10,7 @@ import { useSocket } from "src/components/socket/SocketContext";
 const Messages = (props: any) => {
   const socket = useSocket();
   const [openChats, setOpenChats] = useState(false);
-  const [chats, setChats] = useState<any>();
+  const [chats, setChats] = useState<any>([]);
   // useEffect(() => {
   //   document.addEventListener("click", () => {
   //     window.alert("hello");
@@ -28,7 +28,7 @@ const Messages = (props: any) => {
     };
   }, []);
   if (openChats) {
-    socket.emit("joinRooms");
+    socket.emit("joinRooms", {});
   }
   return (
     <div
@@ -54,6 +54,7 @@ const Messages = (props: any) => {
 
       <div id="messageRooms" className="h-[52vh] overflow-y-auto">
         {openChats === true &&
+          chats.length !== 0 &&
           chats.map((chat: any) => <RoomCard chat={chat} />)}
       </div>
     </div>
