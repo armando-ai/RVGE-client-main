@@ -84,13 +84,15 @@ const ChatRoom = (props: any) => {
     console.log(props.room);
   }
 
-  const elements = ChatMessages.map((message: any) =>
-    message.user.username === props.room.users[0].username ? (
+  const elements = ChatMessages.map((message: any) => {
+    console.log(props.room);
+    console.log("wtf is this data - ", message);
+    return message.user.username === props.room.users[0].username ? (
       <OtherChat message={message.message}></OtherChat>
     ) : (
       <UserChat message={message.message}></UserChat>
-    )
-  );
+    );
+  });
 
   function delChat(id: string) {
     const parent = document.getElementById("chatRoom");
