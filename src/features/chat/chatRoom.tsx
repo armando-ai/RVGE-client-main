@@ -141,7 +141,9 @@ const ChatRoom = (props: any) => {
             id="messages"
             className="flex h-[48vh] w-full self-center overflow-y-auto  align-middle"
           >
-            <div   id="work" className="mt-auto  h-auto w-full ">{elements}</div>
+            <div id="work" className="mt-auto  h-auto w-full ">
+              {elements}
+            </div>
           </div>
           <div
             id="input"

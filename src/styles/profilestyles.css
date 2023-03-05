@@ -237,9 +237,10 @@
     margin-right: 2%;
     outline: none;
   }
-  #games,#messages,#messageRooms,#games,#work::-webkit-scrollbar{
+  #games,#messageRooms,#games::-webkit-scrollbar{
     background-color:transparent;
   }
+
   #games::-webkit-scrollbar-thumb {
    background-color: #e7eaf1;
    border-radius:10px;
@@ -250,4 +251,10 @@
   }
  #input::-webkit-scrollbar-thumb{
     cursor: grabbing!important;
+  }
+  #work::-webkit-scrollbar{
+    background-color:transparent!important;
+  }
+  #messages::-webkit-scrollbar{
+    background-color:transparent!important;
   }
