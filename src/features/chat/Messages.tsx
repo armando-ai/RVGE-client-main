@@ -40,14 +40,16 @@ const Messages = (props: any) => {
         openChats === true && "h-[60%!important]"
       } smooth fixed right-4 bottom-0 z-[9999] h-[6%] w-[25%]  overflow-hidden rounded-md bg-slate-300 ease-in-out`}
     >
-      <div className=" w-full  overflow-hidden  border-b-2 border-b-slate-900 p-[3%]">
+      <div
+        onClick={() => {
+          setOpenChats(!openChats);
+        }}
+        className=" w-full  overflow-hidden  border-b-2 border-b-slate-900 p-[3%]"
+      >
         <h1 className="flex flex-row overflow-hidden">
           Messaging
           <ChatBubbleBottomCenterTextIcon className="ml-1 w-5" />
           <ArrowUpIcon
-            onClick={() => {
-              setOpenChats(!openChats);
-            }}
             className={`${
               openChats === true && "rotate-180"
             } smooth ml-auto h-full w-7 cursor-pointer overflow-hidden`}
@@ -58,7 +60,9 @@ const Messages = (props: any) => {
       <div id="messageRooms" className="h-[52vh] overflow-y-auto">
         {openChats === true &&
           chats.length !== 0 &&
-          chats.map((chat: any) => <RoomCard setChatRoom={props.setChatRoom} chat={chat} />)}
+          chats.map((chat: any) => (
+            <RoomCard setChatRoom={props.setChatRoom} chat={chat} />
+          ))}
       </div>
     </div>
   );
