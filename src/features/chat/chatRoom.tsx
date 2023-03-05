@@ -83,18 +83,30 @@ const ChatRoom = (props: any) => {
         updateHeight();
       }
       return message.user.username === props.room.users[0].username ? (
-        <OtherChat message={message.message}></OtherChat>
+        <OtherChat
+          className={index === 0 && "mt-[4px]"}
+          message={message.message}
+        ></OtherChat>
       ) : (
-        <UserChat message={message.message}></UserChat>
+        <UserChat
+          className={index === 0 && "mt-[4px]"}
+          message={message.message}
+        ></UserChat>
       );
     } else {
       if (index === ChatMessages.length) {
         updateHeight();
       }
       return message.from === props.room.users[0].username ? (
-        <OtherChat message={message.message}></OtherChat>
+        <OtherChat
+          className={index === 0 && "mt-[4px]"}
+          message={message.message}
+        ></OtherChat>
       ) : (
-        <UserChat message={message.message}></UserChat>
+        <UserChat
+          className={index === 0 && "mt-[4px]"}
+          message={message.message}
+        ></UserChat>
       );
     }
   });
