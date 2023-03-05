@@ -70,11 +70,6 @@ const ChatRoom = (props: any) => {
       text.style.height = "";
       text.style.height = text.scrollHeight + "px";
     }
-
-    var scroll = document.getElementById("messages");
-    if (scroll !== null) {
-      scroll.scrollTop = scroll.scrollHeight - scroll.clientHeight;
-    }
   };
   const [ChatMessages, setChatMessages] = useState<any[]>([]);
 
