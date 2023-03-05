@@ -80,12 +80,10 @@ const ChatRoom = (props: any) => {
   const [ChatMessages, setChatMessages] = useState<any[]>([]);
 
   if (props.room.messages.length > 0 && ChatMessages.length === 0) {
-    setChatMessages((prev) => [props.room.messages]);
+    setChatMessages((prev) => props.room.messages);
   }
 
   const elements = ChatMessages.map((message: any) => {
-    console.log("whats it is set to", ChatMessages);
-    console.log("current message - ", message);
     return message.user.username === props.room.users[0].username ? (
       <OtherChat message={message.message}></OtherChat>
     ) : (
