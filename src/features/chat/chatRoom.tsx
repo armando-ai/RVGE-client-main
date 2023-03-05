@@ -81,6 +81,7 @@ const ChatRoom = (props: any) => {
 
   if (props.room.messages.length > 0) {
     setChatMessages((prev) => [...prev, props.room.messages]);
+    console.log(props.room);
   }
 
   const elements = ChatMessages.map((message: any) =>
