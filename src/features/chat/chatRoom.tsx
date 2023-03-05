@@ -113,7 +113,7 @@ const ChatRoom = (props: any) => {
             }}
             className="relative  float-left h-full w-[90%]  p-[3%] text-start "
           >
-            <h1 className="float-left ">XxTrenchxX</h1>
+            <h1 className="float-left ">{props.room.users[0].username}</h1>
 
             <ChatBubbleBottomCenterTextIcon className=" relative float-left ml-1 w-5" />
           </div>

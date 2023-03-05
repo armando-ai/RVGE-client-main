@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import icon from "public/UserIcon.png";
+import ChatRoom from "./chatRoom";
+import { request } from "src/utils";
 const RoomCard = (props: any) => {
   const [del, setDel] = useState(false);
   function checkDateString(dateString: string) {
@@ -34,8 +36,19 @@ const RoomCard = (props: any) => {
       parent?.removeChild(child);
     }
   }
+  const createCurrentRoom = async () => {
+    const data = await request("/getroom/" + props.chat.id, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    props.setChatRoom((prev: any) => [
+      <ChatRoom delRoom={props.setChatRoom} room={data}></ChatRoom>,
+    ]);
+  };
   return (
-    <div id="card">
+    <div id="card" onClick={createCurrentRoom}>
       <div
         id={`${props.chat.id}`}
         onMouseOver={() => {

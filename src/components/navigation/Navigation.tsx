@@ -24,110 +24,21 @@ export const Navigation = (props: any) => {
 
   useEffect(() => {
     socket.on("createdRoom", (data: any) => {
-      console.log("room received", data);
+      
       setChatRoom((prev: any) => [
         <ChatRoom delRoom={setChatRoom} room={data}></ChatRoom>,
       ]);
 
     });
 
-   
+
 
     return () => {
       socket.disconnect();
     };
   }, []);
 
-  const [chats, setChat] = useState([
-    {
-      id: 1,
-      from: "XxTrenchxX",
-      lastMessage: {
-        createdAt: date.toISOString(),
-        message: "XxTrenchxX: i need a better offer",
-      },
-    },
-    {
-      id: 1,
-      from: "XxTrenchxX",
-      lastMessage: {
-        createdAt: date.toISOString(),
-        message: "XxTrenchxX: i need a better offer",
-      },
-    },
-    {
-      id: 1,
-      from: "XxTrenchxX",
-      lastMessage: {
-        createdAt: date.toISOString(),
-        message: "XxTrenchxX: i need a better offer",
-      },
-    },
-    {
-      id: 1,
-      from: "XxTrenchxX",
-      lastMessage: {
-        createdAt: date.toISOString(),
-        message: "XxTrenchxX: i need a better offer",
-      },
-    },
-    {
-      id: 1,
-      from: "XxTrenchxX",
-      lastMessage: {
-        createdAt: date.toISOString(),
-        message: "XxTrenchxX: i need a better offer",
-      },
-    },
-    {
-      id: 1,
-      from: "XxTrenchxX",
-      lastMessage: {
-        createdAt: date.toISOString(),
-        message: "XxTrenchxX: i need a better offer",
-      },
-    },
-    {
-      id: 1,
-      from: "XxTrenchxX",
-      lastMessage: {
-        createdAt: date.toISOString(),
-        message: "XxTrenchxX: i need a better offer",
-      },
-    },
-    {
-      id: 1,
-      from: "XxTrenchxX",
-      lastMessage: {
-        createdAt: date.toISOString(),
-        message: "XxTrenchxX: i need a better offer",
-      },
-    },
-    {
-      id: 1,
-      from: "XxTrenchxX",
-      lastMessage: {
-        createdAt: date.toISOString(),
-        message: "XxTrenchxX: i need a better offer",
-      },
-    },
-    {
-      id: 1,
-      from: "XxTrenchxX",
-      lastMessage: {
-        createdAt: date.toISOString(),
-        message: "XxTrenchxX: i need a better offer",
-      },
-    },
-    {
-      id: 1,
-      from: "XxTrenchxX",
-      lastMessage: {
-        createdAt: date.toISOString(),
-        message: "XxTrenchxX: i need a better offer",
-      },
-    },
-  ]);
+
   // function delChat(game: any) {
   //   chats.splice(
   //     chats.findIndex((value: any) => value.id + "".includes(game + "")),
@@ -141,7 +52,7 @@ export const Navigation = (props: any) => {
   const activeChats = [{}];
   return (
     <div>
-      <Messaging chats={chats}></Messaging>
+      <Messaging setChatRoom={setChatRoom}  ></Messaging>
 
       {chatRoom}
 
