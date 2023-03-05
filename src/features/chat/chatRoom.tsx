@@ -43,16 +43,12 @@ const ChatRoom = (props: any) => {
       await setChatMessages((prev) => [...prev, data]);
       updateHeight();
     });
-
-
   }, []);
   const updateHeight = () => {
-    setTimeout(() => {
-      var scroll = document.getElementById("messages");
-      if (scroll !== null) {
-        scroll.scrollTop = scroll.scrollHeight - scroll.clientHeight;
-      }
-    }, 500);
+    var scroll = document.getElementById("messages");
+    if (scroll !== null) {
+      scroll.scrollTop = scroll.scrollHeight - scroll.clientHeight;
+    }
   };
   const sendMessage = async (message: string) => {
     // socket.emit("joinRooms", {});
@@ -84,14 +80,20 @@ const ChatRoom = (props: any) => {
     setChatMessages((prev) => props.room.messages);
   }
 
-  const elements = ChatMessages.map((message: any) => {
+  const elements = ChatMessages.map((message: any, index: number) => {
     if (message.user) {
+      if (index === ChatMessages.length) {
+        updateHeight();
+      }
       return message.user.username === props.room.users[0].username ? (
         <OtherChat message={message.message}></OtherChat>
       ) : (
         <UserChat message={message.message}></UserChat>
       );
     } else {
+      if (index === ChatMessages.length) {
+        updateHeight();
+      }
       return message.from === props.room.users[0].username ? (
         <OtherChat message={message.message}></OtherChat>
       ) : (
