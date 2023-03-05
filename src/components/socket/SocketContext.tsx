@@ -26,9 +26,7 @@ const SocketProvider = ({ children }: SocketProviderProps) => {
   }
 
   useEffect(() => {
-    socket.on("connected", (data: any) => {
-      socket.emit("joinRooms");
-    });
+    
     return () => {
       socket.disconnect();
     };

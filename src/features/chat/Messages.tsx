@@ -17,20 +17,19 @@ const Messages = (props: any) => {
   //   });
   // }, []);
 
-
-
   useEffect(() => {
     socket.on("joinedRooms", (data: any) => {
       console.log(JSON.stringify(data));
       setChats(JSON.stringify(data));
     });
 
-
     return () => {
       socket.disconnect();
     };
   }, []);
-
+  if (openChats) {
+    socket.emit("joinRooms");
+  }
   return (
     <div
       id="messageTab"

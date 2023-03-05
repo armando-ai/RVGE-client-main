@@ -23,19 +23,17 @@ export const Navigation = (props: any) => {
   const socket = useSocket();
 
   useEffect(() => {
-
     socket.on("createdRoom", (data: any) => {
       console.log("room received", data);
       setChatRoom((prev: any) => [
         <ChatRoom delRoom={setChatRoom} room={data}></ChatRoom>,
       ]);
+      
     });
 
     socket.on("joinedRooms", (data: any) => {
       console.log("joined??? -" + JSON.stringify(data));
     });
-
-  
 
     return () => {
       socket.disconnect();

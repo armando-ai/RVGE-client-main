@@ -6,6 +6,7 @@ import React from "react";
 import { SocketProvider } from "src/components/socket/SocketContext";
 
 const MyApp: AppType = ({ Component, pageProps: { ...pageProps } }) => {
+  
   return (
     <div>
       {typeof window !== undefined && (
