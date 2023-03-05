@@ -24,10 +24,15 @@ export const Navigation = (props: any) => {
 
   useEffect(() => {
     socket.on("roomCreated", (data: any) => {
+      console.log("mayberoom", socket);
       console.log("createRoom", data);
       setChatRoom((prev: any) => [
         <ChatRoom delRoom={setChatRoom} room={data}></ChatRoom>,
       ]);
+    });
+
+    socket.on("joinedRooms", (data: any) => {
+      console.log("joined??? -" + JSON.stringify(data));
     });
     socket.on("connected", (data: any) => {
       console.log(data);
