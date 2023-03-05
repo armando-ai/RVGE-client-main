@@ -23,9 +23,8 @@ export const Navigation = (props: any) => {
   const socket = useSocket();
 
   useEffect(() => {
-    socket.on("roomCreated", (data: any) => {
-      console.log("mayberoom", socket);
-      console.log("createRoom", data);
+    socket.on("createdRoom", (data: any) => {
+      console.log("room received", data);
       setChatRoom((prev: any) => [
         <ChatRoom delRoom={setChatRoom} room={data}></ChatRoom>,
       ]);
