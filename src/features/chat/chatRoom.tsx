@@ -79,7 +79,7 @@ const ChatRoom = (props: any) => {
     }
   };
 
-  const [ChatMessages, setChatMessages] = useState<any[]>([]);
+  const [ChatMessages, setChatMessages] = useState<any[]>([{}]);
 
   const elements = ChatMessages.map((message: any) =>
     message.username === props.room.users[0].username ? (
@@ -141,7 +141,7 @@ const ChatRoom = (props: any) => {
             id="messages"
             className="flex h-[48vh] w-full self-center overflow-y-auto  align-middle"
           >
-            <div className="mt-auto  h-auto w-full ">{elements}</div>
+            <div   id="work" className="mt-auto  h-auto w-full ">{elements}</div>
           </div>
           <div
             id="input"

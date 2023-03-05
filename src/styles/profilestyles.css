@@ -237,7 +237,7 @@
     margin-right: 2%;
     outline: none;
   }
-  #games,#messages,#messageRooms,#games::-webkit-scrollbar{
+  #games,#messages,#messageRooms,#games,#work::-webkit-scrollbar{
     background-color:transparent;
   }
   #games::-webkit-scrollbar-thumb {
