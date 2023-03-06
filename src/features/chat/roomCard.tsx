@@ -27,14 +27,7 @@ const RoomCard = (props: any) => {
       return `${month} ${day}`;
     }
   }
-  function delChat(id: string) {
-    const parent = document.getElementById("card");
-    const child = document.getElementById(id);
 
-    if (child !== null && parent?.contains(child)) {
-      parent?.removeChild(child);
-    }
-  }
   const createCurrentRoom = async () => {
     await getToken();
     const data = await request("/getroom/" + props.chat.id, {
@@ -88,7 +81,7 @@ const RoomCard = (props: any) => {
             stroke="currentColor"
             className="ml-14 h-8 w-8 cursor-pointer text-red-500 hover:animate-bounce"
             onClick={async () => {
-              delChat(props.chat.id);
+              props.removeChat(props.chat);
 
               //   await getToken();
               //   props.deleteTrade(props.tradeId);

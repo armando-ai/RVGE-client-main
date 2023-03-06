@@ -16,6 +16,9 @@ const Messages = (props: any) => {
   //     window.alert("hello");
   //   });
   // }, []);
+  function removeChat(chatToRemove:any){
+    setChats((prev: any[]) => prev.filter((chat: any) => chat !== chatToRemove));
+  }
 
   useEffect(() => {
     socket.on("joinedRooms", (data: any) => {
@@ -62,7 +65,7 @@ const Messages = (props: any) => {
 
       <div id="messageRooms" className="h-[52vh] overflow-y-auto">
         {chats.map((chat: any) => (
-          <RoomCard setRoom={props.setRoom} chat={chat} />
+          <RoomCard setRoom={props.setRoom} chat={chat} removeChat={removeChat}/>
         ))}
       </div>
     </div>
