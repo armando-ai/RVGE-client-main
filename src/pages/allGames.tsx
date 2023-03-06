@@ -207,7 +207,7 @@ const Game = (props: any) => {
                             className="mt-2 w-[6vh] rounded-full bg-slate-400 p-[3%] text-slate-900 hover:text-slate-500  "
                           >
                             <ArrowsRightLeftIcon className="h-10 w-10" />
-                            <p>{offer.user}</p>
+                            <p>{offer.user.username}</p>
                           </button>
                         </div>
                       </h1>{" "}
