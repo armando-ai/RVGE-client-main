@@ -37,8 +37,13 @@ const RoomCard = (props: any) => {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     });
-    props.delRoom("");
-    props.setRoom(data);
+
+    setTimeout(() => {
+      props.delRoom("");
+    }, 500);
+    setTimeout(() => {
+      props.setRoom(data);
+    }, 100);
   };
   return (
     <div id="card" onClick={createCurrentRoom}>
