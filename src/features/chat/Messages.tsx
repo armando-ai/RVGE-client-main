@@ -19,15 +19,16 @@ const Messages = (props: any) => {
 
   useEffect(() => {
     socket.on("joinedRooms", (data: any) => {
+      console.table(data);
       const chatSessions = JSON.parse(JSON.stringify(data));
 
       console.log(chatSessions, chatSessions.length);
       setChats(chatSessions);
     });
 
-    return () => {
-      socket.disconnect();
-    };
+    // return () => {
+    //   socket.disconnect();
+    // };
   }, []);
   // const [fetch, setfetch] = useState(second)
   const [first, setFirst] = useState(false);

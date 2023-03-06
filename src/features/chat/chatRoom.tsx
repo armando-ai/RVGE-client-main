@@ -59,7 +59,6 @@ const ChatRoom = (props: any) => {
 
     socket.emit("message", rawmessage);
 
-    console.log("message entered from text-area", rawmessage);
     await setChatMessages((prev) => [...prev, rawmessage]);
     updateHeight();
     await setValue("");
