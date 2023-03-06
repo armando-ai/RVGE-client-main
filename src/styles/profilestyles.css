@@ -270,10 +270,10 @@
   }
   @keyframes grow {
     0%{
-      height:6%!important;
+      height:6%;
     }
     100%{
-      height:60%!important;
+      height:60%;
     }
 
   }

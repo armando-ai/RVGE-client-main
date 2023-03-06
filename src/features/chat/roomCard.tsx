@@ -37,7 +37,7 @@ const RoomCard = (props: any) => {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     });
-
+    props.delRoom("");
     props.setRoom(data);
   };
   return (
