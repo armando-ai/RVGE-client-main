@@ -19,7 +19,7 @@ export const login = async (credentials: {
     }
   );
 
-  console.log(response);
+  // console.log(response);
 
   return response;
 };

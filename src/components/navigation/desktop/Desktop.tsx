@@ -16,14 +16,14 @@ export const DesktopNavigation = ({ selected, links, className }: Props) => {
     setRawUser(session);
   }
   if (rawUser !== undefined && session !== undefined) {
-    console.log(rawUser);
-    console.log(session);
+    // console.log(rawUser);
+    // console.log(session);
   }
   return (
     <nav
       className={`${className} fixed left-6 top-[5%] flex
-h-[90%] w-28 flex-col  rounded-md pt-[4%]
-bg-slate-200/90`}
+h-[90%] w-28 flex-col  rounded-md bg-slate-200/90
+pt-[4%]`}
     >
       <ul className={`flex h-full w-full flex-col `}>
         {rawUser !== undefined && rawUser.verified === true && (

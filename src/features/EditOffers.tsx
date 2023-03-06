@@ -155,7 +155,7 @@ const EditOffers = (props: any) => {
         <div className="relative  flex h-[60vh] w-full flex-col overflow-scroll   align-middle">
           <div className=" w-[80%]">
             {props.user.offers.map((offer: any) => {
-              console.log(offer);
+              // console.log(offer);
               return (
                 <div
                   className="mt-10   rounded-[50px] bg-slate-300 p-[1%] "

@@ -116,8 +116,7 @@ const ChatRoom = (props: any) => {
   function delChat(id: string) {
     const parent = document.getElementById("chatRoom");
     const child = document.getElementById("chatId");
-    console.log(parent);
-    console.log(child);
+ 
     if (child !== null && parent?.contains(child)) {
       parent?.removeChild(child);
     }

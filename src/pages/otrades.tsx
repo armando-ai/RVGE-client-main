@@ -19,7 +19,7 @@ const otrades = () => {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     });
-    console.log(response.data);
+    console.log("my outgoing trades", response.data);
 
     setOffers(response.data);
   };
@@ -51,7 +51,6 @@ const otrades = () => {
                           offer={offer.games}
                           tradeId={trade.id}
                           trade={trade.games}
-                          
                           user={offer.user}
                         ></TradeCard>
                       )

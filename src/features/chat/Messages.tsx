@@ -22,7 +22,7 @@ const Messages = (props: any) => {
       console.table(data);
       const chatSessions = JSON.parse(JSON.stringify(data));
 
-      console.log(chatSessions, chatSessions.length);
+      
       setChats(chatSessions);
     });
 

@@ -19,7 +19,7 @@ const rtrades = () => {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     });
-    console.log(response.data);
+    console.log("received trades", response.data);
 
     setOffers(response.data);
   };
@@ -44,7 +44,6 @@ const rtrades = () => {
                       deleteTrade={deleteTrade}
                       offer={offer.games}
                       out={false}
-                      
                       user={trade.user}
                       offerId={offer.id}
                       tradeId={trade.id}

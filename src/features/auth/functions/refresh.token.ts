@@ -9,5 +9,5 @@ export const getRefreshedToken = async (id: string, refreshToken: string) => {
     },
   });
 
-  console.log(response);
+  // console.log(response);
 };

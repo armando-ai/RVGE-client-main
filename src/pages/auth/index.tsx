@@ -452,7 +452,7 @@ const Auth = () => {
               type="button"
               className="login-button mi-auto mb-auto rounded-md text-xl "
               onClick={() => {
-                console.log(signUpUser);
+                // console.log(signUpUser);
                 const temp: string[] = [];
                 selectedConsoles.forEach((value: string) =>
                   temp.push(value.replaceAll(" ", "_"))

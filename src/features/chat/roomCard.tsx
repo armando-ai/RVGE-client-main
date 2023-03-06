@@ -30,8 +30,7 @@ const RoomCard = (props: any) => {
   function delChat(id: string) {
     const parent = document.getElementById("card");
     const child = document.getElementById(id);
-    console.log(parent);
-    console.log(child);
+
     if (child !== null && parent?.contains(child)) {
       parent?.removeChild(child);
     }
@@ -91,7 +90,7 @@ const RoomCard = (props: any) => {
             className="ml-14 h-8 w-8 cursor-pointer text-red-500 hover:animate-bounce"
             onClick={async () => {
               delChat(props.chat.id);
-              console.log(props.chat.id);
+              
               //   await getToken();
               //   props.deleteTrade(props.tradeId);
               //   await request("/trades/" + props.tradeId, {

@@ -40,7 +40,7 @@ export const Profile = (props: any) => {
     //send
     user.games.push(game);
     setUser(user);
-    console.log(user.games);
+    
   }
   function setPopUpContent(state: number, title: string) {
     setTitle(title);
@@ -86,7 +86,7 @@ export const Profile = (props: any) => {
       ></EditOffers>,
     ]);
   }
-  
+
 
   return (
     <>
