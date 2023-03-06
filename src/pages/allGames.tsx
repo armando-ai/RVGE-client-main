@@ -23,7 +23,7 @@ const Game = (props: any) => {
   const [platform, setplatform] = useState<string>("");
 
   function getMatchingOffers() {
-    const filteredOffers = offers?.filter((offer: { games: any[] }) => {
+    const filteredOffers = offers?.filter((offer: any) => {
       const filteredGames = offer.games.filter((game: any) => {
         const isTitleMatch = game.name
           .toLowerCase()
@@ -49,7 +49,7 @@ const Game = (props: any) => {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     });
-    console.log(response);
+    console.log("my return value", response);
 
     setOffers(response);
   };
