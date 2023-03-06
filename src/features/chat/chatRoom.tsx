@@ -40,7 +40,7 @@ const ChatRoom = (props: any) => {
   useEffect(() => {
     socket.on("messages", async (data: any) => {
       console.log("message received", data);
-      await setChatMessages((prev) => [...prev, data]);
+      // setChatMessages((prev) => [...prev, data]);
       updateHeight();
     });
   }, []);
@@ -59,6 +59,7 @@ const ChatRoom = (props: any) => {
 
     socket.emit("message", rawmessage);
 
+    setChatMessages((prev) => [...prev, rawmessage]);
     await setValue("");
     var text = document.getElementById("txt");
     if (text !== null) {
