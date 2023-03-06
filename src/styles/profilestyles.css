@@ -262,6 +262,12 @@
   textarea{
     outline:none;
   }
+
+  .growChat{
+    animation-delay: 0.5s;
+    animation: grow 1s ease-in;
+    transition: 0.7s;
+  }
   @keyframes grow {
     0%{
       height:6%!important;
@@ -270,8 +276,4 @@
       height:60%!important;
     }
 
-  }
-  .growChat{
-    animation: grow 1s ease-in;
-    transition: 0.7s;
   }
