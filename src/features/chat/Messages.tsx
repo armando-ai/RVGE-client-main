@@ -46,6 +46,7 @@ const Messages = (props: any) => {
       <div
         onClick={() => {
           setOpenChats(!openChats);
+          setFirst(false);
         }}
         className=" w-full  overflow-hidden  border-b-2 border-b-slate-900 p-[3%]"
       >

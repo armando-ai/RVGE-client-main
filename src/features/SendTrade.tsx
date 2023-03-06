@@ -90,7 +90,11 @@ const SendTrade = (props: any) => {
             },
           });
           props.setPopUp(false);
-          window.alert("Trade Sent");
+          window.alert(
+            "Trade Sent" +
+              props.offerId +
+              selectedConsoles.map((obj: { id: any }) => obj.id)
+          );
         }}
       >
         Send Offer
