@@ -19,7 +19,7 @@ export const Navigation = (props: any) => {
   const [openChats, setOpenChats] = useState(false);
   const date = new Date();
 
-  const [chatRoom, setChatRoom] = useState<any>();
+  const [chatRoom, setChatRoom] = useState<any>("");
   const socket = useSocket();
 
   function delRoom() {
@@ -44,7 +44,7 @@ export const Navigation = (props: any) => {
   return (
     <div>
       <Messaging setRoom={setRoom} delRoom={delRoom}></Messaging>
-      {chatRoom !== "" && (
+      {chatRoom !== "" && chatRoom && (
         <ChatRoom delRoom={delRoom} room={chatRoom}></ChatRoom>
       )}
 
