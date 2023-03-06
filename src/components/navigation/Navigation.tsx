@@ -26,8 +26,10 @@ export const Navigation = (props: any) => {
     setChatRoom([]);
   }
   function setRoom(data: any) {
+    delRoom();
+    console.log("my current data",chatRoom)
     let rooms = [<ChatRoom delRoom={delRoom} room={data}></ChatRoom>];
-    setChatRoom(rooms);
+    setChatRoom((prev: any) => rooms);
   }
 
   useEffect(() => {
