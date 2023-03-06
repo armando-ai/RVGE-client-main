@@ -23,7 +23,7 @@ export const Navigation = (props: any) => {
   const socket = useSocket();
 
   function delRoom() {
-    setChatRoom({});
+    setChatRoom("");
   }
   function setRoom(data: any) {
     delRoom();
