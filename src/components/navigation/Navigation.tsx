@@ -22,10 +22,19 @@ export const Navigation = (props: any) => {
   const [chatRoom, setChatRoom] = useState<any>([]);
   const socket = useSocket();
 
+  function delRoom() {
+    setChatRoom([]);
+  }
+  function setRoom(data: any) {
+    setChatRoom((prev: any) => [
+      <ChatRoom delRoom={delRoom} room={data}></ChatRoom>,
+    ]);
+  }
+
   useEffect(() => {
     socket.on("createdRoom", (data: any) => {
       setChatRoom((prev: any) => [
-        <ChatRoom delRoom={setChatRoom} room={data}></ChatRoom>,
+        <ChatRoom delRoom={delRoom} room={data}></ChatRoom>,
       ]);
     });
 
@@ -37,7 +46,7 @@ export const Navigation = (props: any) => {
   const activeChats = [{}];
   return (
     <div>
-      <Messaging setChatRoom={setChatRoom}></Messaging>
+      <Messaging setRoom={setRoom}></Messaging>
 
       {chatRoom}
 

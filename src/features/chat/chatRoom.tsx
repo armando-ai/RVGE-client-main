@@ -114,13 +114,7 @@ const ChatRoom = (props: any) => {
   });
 
   function delChat(id: string) {
-    const parent = document.getElementById("chatRoom");
-    const child = document.getElementById("chatId");
-
-    if (child !== null && parent?.contains(child)) {
-      parent?.removeChild(child);
-    }
-    props.delRoom((prev: any) => []);
+    props.delRoom();
   }
   return (
     <div id="chatRoom">

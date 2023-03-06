@@ -45,11 +45,7 @@ const RoomCard = (props: any) => {
       },
     });
 
-    props.setChatRoom((prev: any) => []);
-
-    // props.setChatRoom((prev: any) => [
-    //   <ChatRoom delRoom={props.setChatRoom} room={data}></ChatRoom>,
-    // ]);
+    props.setRoom(data);
   };
   return (
     <div id="card" onClick={createCurrentRoom}>

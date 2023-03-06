@@ -62,7 +62,7 @@ const Messages = (props: any) => {
 
       <div id="messageRooms" className="h-[52vh] overflow-y-auto">
         {chats.map((chat: any) => (
-          <RoomCard setChatRoom={props.setChatRoom} chat={chat} />
+          <RoomCard setRoom={props.setRoom} chat={chat} />
         ))}
       </div>
     </div>
