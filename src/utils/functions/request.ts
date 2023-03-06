@@ -21,7 +21,7 @@ export const request = async <T>(
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${url}`, {
     method: method.toUpperCase(),
     headers: headers,
-    body: JSON.stringify(body),
+    body: body ? JSON.stringify(body) : undefined,
   });
 
   return await (<T>response.json());
