@@ -22,7 +22,6 @@ const Messages = (props: any) => {
       console.table(data);
       const chatSessions = JSON.parse(JSON.stringify(data));
 
-      
       setChats(chatSessions);
     });
 
@@ -62,11 +61,9 @@ const Messages = (props: any) => {
       </div>
 
       <div id="messageRooms" className="h-[52vh] overflow-y-auto">
-        {openChats === true &&
-          chats.length !== 0 &&
-          chats.map((chat: any) => (
-            <RoomCard setChatRoom={props.setChatRoom} chat={chat} />
-          ))}
+        {chats.map((chat: any) => (
+          <RoomCard setChatRoom={props.setChatRoom} chat={chat} />
+        ))}
       </div>
     </div>
   );

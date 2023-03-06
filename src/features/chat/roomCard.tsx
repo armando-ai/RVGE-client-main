@@ -44,7 +44,8 @@ const RoomCard = (props: any) => {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     });
-    props.setChatRoom((prev: any) => [
+    props.setChatRoom([]);
+    props.setChatRoom([
       <ChatRoom delRoom={props.setChatRoom} room={data}></ChatRoom>,
     ]);
   };
@@ -90,7 +91,7 @@ const RoomCard = (props: any) => {
             className="ml-14 h-8 w-8 cursor-pointer text-red-500 hover:animate-bounce"
             onClick={async () => {
               delChat(props.chat.id);
-              
+
               //   await getToken();
               //   props.deleteTrade(props.tradeId);
               //   await request("/trades/" + props.tradeId, {
