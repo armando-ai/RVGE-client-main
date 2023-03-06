@@ -61,6 +61,7 @@ const ChatRoom = (props: any) => {
 
     console.log("message entered from text-area", rawmessage);
     await setChatMessages((prev) => [...prev, rawmessage]);
+    updateHeight();
     await setValue("");
     var text = document.getElementById("txt");
     if (text !== null) {
