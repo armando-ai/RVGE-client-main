@@ -116,7 +116,7 @@ const ChatRoom = (props: any) => {
   function delChat(id: string) {
     const parent = document.getElementById("chatRoom");
     const child = document.getElementById("chatId");
- 
+
     if (child !== null && parent?.contains(child)) {
       parent?.removeChild(child);
     }
@@ -128,7 +128,7 @@ const ChatRoom = (props: any) => {
         id="chatId"
         className={`${
           openChats === true && "h-[60%!important]"
-        } smooth absolute right-[30%] bottom-0 z-[9999] h-[6%] w-[25%] overflow-hidden rounded-md bg-slate-300 ease-in-out`}
+        } smooth growChat absolute right-[30%] bottom-0 z-[9999] h-[6%] w-[25%] overflow-hidden rounded-md bg-slate-300 ease-in-out`}
       >
         <div className=" float-left h-[7vh] w-full cursor-pointer border-b-2 border-b-slate-900 bg-slate-400 ">
           <div

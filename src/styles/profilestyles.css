@@ -262,3 +262,16 @@
   textarea{
     outline:none;
   }
+  @keyframes grow {
+    0%{
+      height:6%!important;
+    }
+    100%{
+      height:60%!important;
+    }
+
+  }
+  .growChat{
+    animation: grow 1s ease-in;
+    transition: 0.7s;
+  }

@@ -44,8 +44,8 @@ const RoomCard = (props: any) => {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     });
-    props.setChatRoom([]);
-    props.setChatRoom([
+
+    props.setChatRoom((prev: any) => [
       <ChatRoom delRoom={props.setChatRoom} room={data}></ChatRoom>,
     ]);
   };
