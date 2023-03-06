@@ -86,7 +86,9 @@ const SendTrade = (props: any) => {
               authorization: `Bearer ${localStorage.getItem("accessToken")}`,
             },
             body: {
-              games: selectedConsoles.map((obj: { id: any }) => obj.id),
+              trade: {
+                games: selectedConsoles.map((obj: { id: any }) => obj.id),
+              },
             },
           });
           props.setPopUp(false);
