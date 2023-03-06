@@ -27,15 +27,13 @@ export const Navigation = (props: any) => {
   }
   function setRoom(data: any) {
     delRoom();
-    console.log("my current data", chatRoom);
-    let rooms = <ChatRoom delRoom={delRoom} room={data}></ChatRoom>;
-    setChatRoom((prev: any) => rooms);
+    setChatRoom((prev: any) => data);
   }
 
   useEffect(() => {
     socket.on("createdRoom", (data: any) => {
       setChatRoom((prev: any) => (
-        <ChatRoom delRoom={delRoom} room={data}></ChatRoom>
+        data
       ));
     });
 
@@ -49,7 +47,7 @@ export const Navigation = (props: any) => {
     <div>
       <Messaging setRoom={setRoom} delRoom={delRoom}></Messaging>
 
-      {chatRoom}
+      <ChatRoom delRoom={delRoom} room={chatRoom}></ChatRoom>
 
       <DesktopNavigation
         selected={selected}
