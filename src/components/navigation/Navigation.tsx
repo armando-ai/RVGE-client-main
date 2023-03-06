@@ -47,7 +47,7 @@ export const Navigation = (props: any) => {
   const activeChats = [{}];
   return (
     <div>
-      <Messaging setRoom={setRoom}></Messaging>
+      <Messaging setRoom={setRoom} delRoom={delRoom}></Messaging>
 
       {chatRoom}
 
