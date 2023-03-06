@@ -66,14 +66,14 @@ const TradeCard = (props: any) => {
       </div>
       <ChatBubbleLeftEllipsisIcon
         onClick={createRoom}
-        className=" absolute  top-[5%] z-[100]  w-9 cursor-pointer"
+        className=" relative  top-[5%] z-[100]  w-9 cursor-pointer"
       />
       <Link
         href={{
           pathname: `/ViewProfile`,
           query: { user: JSON.stringify(props.user) },
         }}
-        className="smooth absolute top-3 right-[12%] z-10 ml-auto flex cursor-pointer text-2xl font-light hover:border-b-2 hover:border-b-slate-500 hover:text-slate-500"
+        className="smooth relative top-3 right-[12%] z-10 ml-auto flex cursor-pointer text-2xl font-light hover:border-b-2 hover:border-b-slate-500 hover:text-slate-500"
       >
         From: {props.user.username}
       </Link>
