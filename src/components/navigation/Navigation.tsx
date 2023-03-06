@@ -32,9 +32,7 @@ export const Navigation = (props: any) => {
 
   useEffect(() => {
     socket.on("createdRoom", (data: any) => {
-      setChatRoom((prev: any) => (
-        data
-      ));
+      setChatRoom((prev: any) => data);
     });
 
     return () => {
@@ -46,8 +44,9 @@ export const Navigation = (props: any) => {
   return (
     <div>
       <Messaging setRoom={setRoom} delRoom={delRoom}></Messaging>
-
-      <ChatRoom delRoom={delRoom} room={chatRoom}></ChatRoom>
+      {chatRoom !== "" && (
+        <ChatRoom delRoom={delRoom} room={chatRoom}></ChatRoom>
+      )}
 
       <DesktopNavigation
         selected={selected}
