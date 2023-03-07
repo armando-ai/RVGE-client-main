@@ -16,7 +16,7 @@ import { useSocket } from "../socket/SocketContext";
 
 export const Navigation = (props: any) => {
   const [selected, setSelected] = useState("Home");
-  const [openChats, setOpenChats] = useState(false);
+  const [sendNotifications, setSendNotifications] = useState(false);
   const date = new Date();
 
   const [chatRoom, setChatRoom] = useState<any>("");
@@ -28,6 +28,11 @@ export const Navigation = (props: any) => {
   function setRoom(data: any) {
     delRoom();
     setChatRoom(data);
+  }
+  if (sendNotifications === false) {
+    socket.emit("notifications", {});
+    socket.emit("joinNotifications", {});
+    setSendNotifications(true);
   }
 
   useEffect(() => {
