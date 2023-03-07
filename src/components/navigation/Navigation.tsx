@@ -60,7 +60,6 @@ export const Navigation = (props: any) => {
     };
   }, []);
 
-
   const activeChats = [{}];
   return (
     <div>
@@ -68,11 +67,11 @@ export const Navigation = (props: any) => {
       {chatRoom !== "" && chatRoom && (
         <ChatRoom delRoom={delRoom} room={chatRoom}></ChatRoom>
       )}
-    
+
       <NotificationCard
         setRoom={setRoom}
         delRoom={delRoom}
-        className={notification !== "" ? "right-5" : "right-[-25%]"}
+        className={notification !== "" ? "goLeft" : "right-[-25%]"}
         notification={notification}
       />
       <DesktopNavigation

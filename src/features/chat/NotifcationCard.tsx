@@ -33,7 +33,7 @@ const NotificationCard = (props: any) => {
                   router.push("/rtrades");
                 };
           }}
-          className={`${props.className} fixed top-5 h-[10%] w-[24%] flex-col content-start justify-start rounded-md bg-slate-400 p-[1%]`}
+          className={`${props.className} fixed top-5 z-[9999] h-[10%] w-[24%] flex-col content-start justify-start rounded-md bg-slate-400 p-[1%]`}
         >
           <div className="flex-row flex w-full p-[1%]">
             <BellAlertIcon className="mr-auto h-7 w-7"></BellAlertIcon>

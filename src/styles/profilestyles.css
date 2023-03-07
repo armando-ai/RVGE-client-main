@@ -277,3 +277,21 @@
     }
 
   }
+  .goLeft{
+
+    animation: left 4s ;
+    transition: 0.7s;
+  }
+  @keyframes left {
+    0%{
+      right:-25%;
+    }
+    50%{
+      right:1.25em;
+    }
+    100%{
+      right:-25%;
+    }
+
+
+  }
