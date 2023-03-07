@@ -6,7 +6,6 @@ import {
 } from "@heroicons/react/24/outline";
 import RoomCard from "./roomCard";
 import { useSocket } from "src/components/socket/SocketContext";
-import { useSession } from "src/hooks";
 
 const Messages = (props: any) => {
   const socket = useSocket();
@@ -22,10 +21,9 @@ const Messages = (props: any) => {
       prev.filter((chat: any) => chat !== chatToRemove)
     );
   }
-  const { data: session } = useSession();
-  const [User, setUser] = useState<any>();
+
   useEffect(() => {
-    socket.on("joinedRooms", async (data: any) => {
+    socket.on("joinedRooms", (data: any) => {
       console.table(data);
       const chatSessions = JSON.parse(JSON.stringify(data));
 
@@ -69,6 +67,7 @@ const Messages = (props: any) => {
 
       <div id="messageRooms" className="h-[52vh] overflow-y-auto">
         {chats.map((chat: any) => {
+         
           <RoomCard
             setRoom={props.setRoom}
             delRoom={props.delRoom}
