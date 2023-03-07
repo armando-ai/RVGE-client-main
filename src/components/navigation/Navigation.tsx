@@ -71,7 +71,7 @@ export const Navigation = (props: any) => {
       {chatRoom !== "" && chatRoom && (
         <ChatRoom delRoom={delRoom} room={chatRoom}></ChatRoom>
       )}
-      <div className="right-5 top-5 z-[9999] h-auto w-[300px] overflow-hidden">
+      <div className="fixed right-5 top-5 z-[9999] h-auto w-[300px] overflow-hidden">
         {notification.map((message: any, index: number) => (
           <NotificationCard
             key={index}
