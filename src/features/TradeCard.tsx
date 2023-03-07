@@ -50,13 +50,13 @@ const TradeCard = (props: any) => {
         className="mi-auto mb-10 flex w-[80%] flex-row rounded-md border-4 border-black py-8 "
       >
         <ArrowsRightLeftIcon className="absolute flex h-3/5 w-3/5  font-thin text-slate-300/80" />
-        <div className="z-10 mb-auto flex h-full w-1/2 flex-col overflow-hidden p-8">
+        <div className="z-10 mb-auto flex h-full w-1/2 flex-col p-8">
           {props.out === false ? (
-            <h3 className="mb-4 overflow-hidden border-b-2 border-slate-300 pb-3  text-center text-2xl">
+            <h3 className="mb-4 border-b-2 border-slate-300 pb-3 text-center  text-2xl">
               Your Offer:
             </h3>
           ) : (
-            <h3 className="mb-4 overflow-hidden border-b-2 border-slate-300 pb-3 text-center text-2xl">
+            <h3 className="mb-4 border-b-2 border-slate-300 pb-3 text-center  text-2xl">
               Your Trade Offer:
             </h3>
           )}
