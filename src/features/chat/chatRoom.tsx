@@ -39,9 +39,11 @@ const ChatRoom = (props: any) => {
   };
   useEffect(() => {
     socket.on("messages", async (data: any) => {
-      console.log("message received", data);
-      setChatMessages((prev) => [...prev, data]);
-      updateHeight();
+      if (data.roomId.includes(props.room.id)) {
+        console.log("message received", data);
+        setChatMessages((prev) => [...prev, data]);
+        updateHeight();
+      }
     });
   }, []);
   const updateHeight = () => {
@@ -53,7 +55,6 @@ const ChatRoom = (props: any) => {
     }, 250);
   };
   const sendMessage = async (message: string) => {
-    
     // socket.emit("joinRooms", {});
     // console.log("mayberoom", socket);
     const rawmessage = { roomId: props.room.id, message: message };
