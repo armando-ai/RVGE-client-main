@@ -71,16 +71,20 @@ export const Navigation = (props: any) => {
       {chatRoom !== "" && chatRoom && (
         <ChatRoom delRoom={delRoom} room={chatRoom}></ChatRoom>
       )}
-      <div className="fixed right-5 top-5 z-[9999] h-auto w-[300px] overflow-hidden">
-        {notification.map((message: any, index: number) => (
-          <NotificationCard
-            key={index}
-            setRoom={setRoom}
-            delRoom={delRoom}
-            className={index === notification.length - 1 ? "goLeft" : ""}
-            notification={message}
-          />
-        ))}
+      <div className="fixed right-5 top-5 z-[9999] h-auto w-[25%] overflow-hidden">
+        {notification.map((message: any, index: number) => {
+          setTimeout(() => {
+            return (
+              <NotificationCard
+                key={index}
+                setRoom={setRoom}
+                delRoom={delRoom}
+                className={index === notification.length - 1 ? "goLeft" : ""}
+                notification={message}
+              />
+            );
+          }, 1000);
+        })}
       </div>
 
       <DesktopNavigation
