@@ -26,6 +26,7 @@ const NotificationCard = (props: any) => {
     }, 50);
   };
   props.removeNotification(props.notification);
+  props.top = "top-[" + props.top + "%]";
   return (
     <div
       onClick={() => {
@@ -33,8 +34,7 @@ const NotificationCard = (props: any) => {
           ? createCurrentRoom()
           : router.push("/rtrades");
       }}
-      className={`${props.className} cursor-pointer flex-col content-start justify-start overflow-hidden rounded-md bg-slate-400 p-[1%]`}
-      style={{ top: props.top + "vh!important" }}
+      className={`${props.className} ${props.top} cursor-pointer  flex-col content-start justify-start overflow-hidden rounded-md bg-slate-400 p-[1%]`}
     >
       <div className="flex w-full flex-row overflow-hidden p-[1%]">
         {props.notification.type.includes("chat") ? (
