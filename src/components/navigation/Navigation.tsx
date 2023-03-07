@@ -45,12 +45,12 @@ export const Navigation = (props: any) => {
     socket.on("trades", (notification: any) => {
       console.log(notification);
       setNotifications((prev: any) => [...prev, notification]);
-      removeNotification(notification);
+
     });
     socket.on("chats", (notification: any) => {
       console.log(notification);
       setNotifications((prev: any) => [...prev, notification]);
-      removeNotification(notification);
+
     });
     return () => {
       socket.disconnect();
@@ -72,14 +72,15 @@ export const Navigation = (props: any) => {
       )}
 
       {notifications.map((notification: { id: any }, index: number) => {
-        console.log(index);
+        if(index===notifications.length){
+          removeNotification(notifications.At(0))
+        }
         return (
           <NotificationCard
             key={index}
             notification={notification}
             removeNotification={removeNotification}
             top={index * 10}
-     
           />
         );
       })}
