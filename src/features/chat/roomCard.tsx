@@ -49,13 +49,13 @@ const RoomCard = (props: any) => {
     <div id="card" onClick={createCurrentRoom}>
       <div
         id={`${props.chat.id}`}
-        onMouseOver={() => {
-          setDel(true);
-        }}
-        onMouseLeave={() => {
-          setDel(false);
-        }}
-        className="smooth flex h-auto w-full cursor-pointer flex-row border-b-2 border-slate-500 p-[1%] hover:bg-slate-400 "
+        // onMouseOver={() => {
+        //   setDel(true);
+        // }}
+        // onMouseLeave={() => {
+        //   setDel(false);
+        // }}
+        className="smooth flex-row flex h-auto w-full cursor-pointer border-b-2 border-slate-500 p-[1%] hover:bg-slate-400 "
       >
         <Image
           className=" mr-1 rounded-full"
