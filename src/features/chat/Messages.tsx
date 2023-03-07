@@ -52,9 +52,9 @@ const Messages = (props: any) => {
           setOpenChats(!openChats);
           setFirst(false);
         }}
-        className=" w-full  overflow-hidden  border-b-2 border-b-slate-900 p-[3%]"
+        className=" w-full  cursor-pointer  overflow-hidden border-b-2 border-b-slate-900 p-[3%]"
       >
-        <h1 className="flex flex-row overflow-hidden">
+        <h1 className="flex-row flex overflow-hidden">
           Messaging
           <ChatBubbleBottomCenterTextIcon className="ml-1 w-5" />
           <ArrowUpIcon
