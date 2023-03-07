@@ -29,14 +29,14 @@ const TradeCard = (props: any) => {
       <div className=" flex h-auto w-full flex-row">
         <ChatBubbleLeftEllipsisIcon
           onClick={createRoom}
-          className=" ml-auto w-9 cursor-pointer"
+          className=" mr-auto w-9 cursor-pointer"
         />
         <Link
           href={{
             pathname: `/ViewProfile`,
             query: { user: JSON.stringify(props.user) },
           }}
-          className="smooth  z-[1000] mr-auto flex cursor-pointer text-2xl font-light hover:border-b-2 hover:border-b-slate-500 hover:text-slate-500"
+          className="smooth  z-[1000] ml-auto flex cursor-pointer text-2xl font-light hover:border-b-2 hover:border-b-slate-500 hover:text-slate-500"
         >
           {props.out === false ? (
             <p>From: {props.user.username}</p>
