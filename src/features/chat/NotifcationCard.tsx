@@ -25,7 +25,7 @@ const NotificationCard = (props: any) => {
       props.setRoom(data);
     }, 50);
   };
-  props.top = "top-[" + props.top + "vh]";
+  const value = "top-[" + props.top + "px]";
   return (
     <div
       onClick={() => {
@@ -33,7 +33,7 @@ const NotificationCard = (props: any) => {
           ? createCurrentRoom()
           : router.push("/rtrades");
       }}
-      className={`goLeft fixed right-4 z-[9999] ${props.top} mt-5 h-[10%] w-[24%] cursor-pointer  flex-col content-start justify-start overflow-hidden rounded-md bg-slate-400 p-[1%]`}
+      className={`goLeft fixed right-4 z-[9999] ${value} mt-5 h-[10%] w-[24%] cursor-pointer  flex-col content-start justify-start overflow-hidden rounded-md bg-slate-400 p-[1%]`}
     >
       <div className="flex w-full flex-row overflow-hidden p-[1%]">
         {props.notification.type.includes("chat") ? (
