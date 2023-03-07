@@ -66,15 +66,14 @@ const Messages = (props: any) => {
       </div>
 
       <div id="messageRooms" className="h-[52vh] overflow-y-auto">
-        {chats.map((chat: any) => {
-         
+        {chats.map((chat: any) => (
           <RoomCard
             setRoom={props.setRoom}
             delRoom={props.delRoom}
             chat={chat}
             removeChat={removeChat}
-          />;
-        })}
+          />
+        ))}
       </div>
     </div>
   );
