@@ -76,7 +76,7 @@ export const Navigation = (props: any) => {
           key={index}
           notification={notification}
           className={`fixed top-${
-            index * 12 + 5
+            index === 0 ? 5 : index * 12 + 5
           } right-4 z-[9999] h-[10%] w-[24%]`}
         />
       ))}
