@@ -36,23 +36,27 @@ export const Navigation = (props: any) => {
 
     setSendNotifications(true);
   }
-  const [notification, setNotification] = useState("");
+  const [notification, setNotification] = useState<any>([]);
   useEffect(() => {
     socket.on("createdRoom", (data: any) => {
       setChatRoom(data);
     });
     socket.on("chats", (data: any) => {
       console.log(data);
-      setNotification(data);
+      setNotification((prevState: any) => [...prevState, data]);
       setTimeout(() => {
-        setNotification("");
+        setNotification((prevState: any[]) =>
+          prevState.filter((n: any) => n !== data)
+        );
       }, 6000);
     });
     socket.on("trades", (data: any) => {
       console.log(data);
-      setNotification(data);
+      setNotification((prevState: any) => [...prevState, data]);
       setTimeout(() => {
-        setNotification("");
+        setNotification((prevState: any[]) =>
+          prevState.filter((n: any) => n !== data)
+        );
       }, 6000);
     });
     return () => {
@@ -67,13 +71,18 @@ export const Navigation = (props: any) => {
       {chatRoom !== "" && chatRoom && (
         <ChatRoom delRoom={delRoom} room={chatRoom}></ChatRoom>
       )}
+      <div className="right-5 top-5 z-[9999] h-auto w-[300px] overflow-hidden">
+        {notification.map((message: any, index: number) => (
+          <NotificationCard
+            key={index}
+            setRoom={setRoom}
+            delRoom={delRoom}
+            className={index === notification.length - 1 ? "goLeft" : ""}
+            notification={message}
+          />
+        ))}
+      </div>
 
-      <NotificationCard
-        setRoom={setRoom}
-        delRoom={delRoom}
-        className={notification !== "" ? "goLeft" : ""}
-        notification={notification}
-      />
       <DesktopNavigation
         selected={selected}
         links={NavigationLinks}
