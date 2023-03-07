@@ -22,12 +22,13 @@ const Messages = (props: any) => {
       prev.filter((chat: any) => chat !== chatToRemove)
     );
   }
+  const { data: session } = useSession();
   const [User, setUser] = useState<any>();
   useEffect(() => {
     socket.on("joinedRooms", async (data: any) => {
       console.table(data);
       const chatSessions = JSON.parse(JSON.stringify(data));
-      const { data: session } = await useSession();
+
       setUser(session);
       setChats(chatSessions);
     });
