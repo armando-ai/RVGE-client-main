@@ -71,7 +71,7 @@ export const Navigation = (props: any) => {
       <NotificationCard
         setRoom={setRoom}
         delRoom={delRoom}
-        className={notification !== "" ? "goLeft" : "right-[-25%]"}
+        className={notification !== "" ? "goLeft" : ""}
         notification={notification}
       />
       <DesktopNavigation

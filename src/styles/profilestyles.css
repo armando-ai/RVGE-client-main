@@ -279,7 +279,8 @@
   }
   .goLeft{
 
-    animation: left 4s ;
+    animation: left 5s forwards;
+
     transition: 0.7s;
   }
   @keyframes left {

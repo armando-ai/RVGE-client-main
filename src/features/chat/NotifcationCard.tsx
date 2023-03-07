@@ -1,4 +1,7 @@
-import { BellAlertIcon } from "@heroicons/react/24/outline";
+import {
+  BellAlertIcon,
+  ChatBubbleBottomCenterTextIcon,
+} from "@heroicons/react/24/outline";
 import { useRouter } from "next/router";
 import React from "react";
 import { getToken, request } from "src/utils";
@@ -33,13 +36,18 @@ const NotificationCard = (props: any) => {
                   router.push("/rtrades");
                 };
           }}
-          className={`${props.className} fixed top-5 z-[9999] h-[10%] w-[24%] cursor-pointer flex-col content-start justify-start overflow-hidden rounded-md bg-slate-400 p-[1%]`}
+          className={`${props.className} fixed top-5 right-[25%] z-[9999] h-[10%] w-[24%] cursor-pointer flex-col content-start justify-start overflow-hidden rounded-md bg-slate-400 p-[1%]`}
         >
           <div className="flex-row flex w-full overflow-hidden p-[1%]">
-            <BellAlertIcon className="mr-auto h-7 w-7"></BellAlertIcon>
-            <div className="ml-auto h-full w-[80%] flex-col">
-              <h1 className="mr-auto">{props.notification.from}</h1>
-              <p className="mr-auto  text-xs">
+            {props.notification.type.includes("chat") ? (
+              <ChatBubbleBottomCenterTextIcon className="mr-auto h-7 w-7" />
+            ) : (
+              <BellAlertIcon className="mr-auto h-7 w-7"></BellAlertIcon>
+            )}
+
+            <div className="ml-auto h-full w-[80%]">
+              <h1 className="">{props.notification.from}</h1>
+              <p className=" text-xs">
                 {props.notification.type.includes("chat")
                   ? "Message: " + props.notification.message
                   : "Has sent you a trade"}
