@@ -26,7 +26,7 @@ const SocketProvider = ({ children }: SocketProviderProps) => {
     setTimeout(() => {
       socket.emit("notifications", {});
       socket.emit("joinNotifications", {});
-    }, 1000);
+    }, 10000);
   }
 
   useEffect(() => {
