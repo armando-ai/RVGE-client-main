@@ -36,28 +36,27 @@ export const Navigation = (props: any) => {
 
     setSendNotifications(true);
   }
-  const [notification, setNotification] = useState("");
+  const [notifications, setNotifications] = useState<any>([]);
   useEffect(() => {
     socket.on("createdRoom", (data: any) => {
       setChatRoom(data);
     });
-    socket.on("chats", (data: any) => {
+
+    socket.on("trades", (notification: any) => {
+      console.log(notification);
+
+      setNotifications([...notifications, notification]);
       setTimeout(() => {
-        console.log(data);
-        setNotification(data);
-        setTimeout(() => {
-          setNotification("");
-        }, 6000);
-      }, 1000);
+        setNotifications(notifications.filter((n: any) => n !== notification));
+      }, 6000);
     });
-    socket.on("trades", (data: any) => {
+    socket.on("chats", (notification: any) => {
+      console.log(notification);
+
+      setNotifications([...notifications, notification]);
       setTimeout(() => {
-        console.log(data);
-        setNotification(data);
-        setTimeout(() => {
-          setNotification("");
-        }, 6000);
-      }, 1000);
+        setNotifications(notifications.filter((n: any) => n !== notification));
+      }, 6000);
     });
     return () => {
       socket.disconnect();
@@ -72,12 +71,17 @@ export const Navigation = (props: any) => {
         <ChatRoom delRoom={delRoom} room={chatRoom}></ChatRoom>
       )}
 
-      <NotificationCard
-        setRoom={setRoom}
-        delRoom={delRoom}
-        className={notification !== "" ? "goLeft" : ""}
-        notification={notification}
-      />
+      <div className="fixed top-0 right-0 flex flex-col-reverse items-end p-4">
+        {notifications.map((notification: { id: any }, index: number) => (
+          <NotificationCard
+            key={index}
+            notification={notification}
+            className={`fixed top-${
+              index * 12 + 5
+            } goLeft right-4 z-[9999] h-[10%] w-[24%]`}
+          />
+        ))}
+      </div>
       <DesktopNavigation
         selected={selected}
         links={NavigationLinks}
