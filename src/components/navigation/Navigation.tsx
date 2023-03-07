@@ -13,6 +13,7 @@ import Messaging from "src/features/chat/Messages";
 import ChatRoom from "src/features/chat/chatRoom";
 import { io } from "socket.io-client";
 import { useSocket } from "../socket/SocketContext";
+import NotificationCard from "src/features/chat/NotifcationCard";
 
 export const Navigation = (props: any) => {
   const [selected, setSelected] = useState("Home");
@@ -32,6 +33,7 @@ export const Navigation = (props: any) => {
   if (sendNotifications === false) {
     socket.emit("notifications", {});
     socket.emit("joinNotifications", {});
+
     setSendNotifications(true);
   }
 
@@ -41,14 +43,23 @@ export const Navigation = (props: any) => {
     });
     socket.on("chats", (data: any) => {
       console.log(data);
+      setNotification(data)
+      setTimeout(()=>{
+        setNotification("")
+      },3500)
     });
     socket.on("trades", (data: any) => {
       console.log(data);
+      setNotification(data)
+      setTimeout(()=>{
+        setNotification("")
+      },3500)
     });
     return () => {
       socket.disconnect();
     };
   }, []);
+  const [notification, setNotification] = useState("");
 
   const activeChats = [{}];
   return (
@@ -58,6 +69,10 @@ export const Navigation = (props: any) => {
         <ChatRoom delRoom={delRoom} room={chatRoom}></ChatRoom>
       )}
 
+      <NotificationCard
+        className={`${notification === "" ? "right-[-25%]" : "right-5"}`}
+        notification={notification}
+      />
       <DesktopNavigation
         selected={selected}
         links={NavigationLinks}

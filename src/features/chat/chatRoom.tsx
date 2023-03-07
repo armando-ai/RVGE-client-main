@@ -58,7 +58,7 @@ const ChatRoom = (props: any) => {
     // socket.emit("joinRooms", {});
     // console.log("mayberoom", socket);
     const rawmessage = { roomId: props.room.id, message: message };
-
+    socket.emit("joinRooms", {});
     socket.emit("message", rawmessage);
 
     await setChatMessages((prev) => [...prev, rawmessage]);
