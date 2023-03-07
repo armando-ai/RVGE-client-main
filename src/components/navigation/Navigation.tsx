@@ -36,7 +36,7 @@ export const Navigation = (props: any) => {
 
     setSendNotifications(true);
   }
-
+  const [notification, setNotification] = useState("");
   useEffect(() => {
     socket.on("createdRoom", (data: any) => {
       setChatRoom(data);
@@ -46,20 +46,20 @@ export const Navigation = (props: any) => {
       setNotification(data);
       setTimeout(() => {
         setNotification("");
-      }, 3500);
+      }, 5000);
     });
     socket.on("trades", (data: any) => {
       console.log(data);
       setNotification(data);
       setTimeout(() => {
         setNotification("");
-      }, 3500);
+      }, 5000);
     });
     return () => {
       socket.disconnect();
     };
   }, []);
-  const [notification, setNotification] = useState("");
+
 
   const activeChats = [{}];
   return (
@@ -72,7 +72,7 @@ export const Navigation = (props: any) => {
       <NotificationCard
         setRoom={setRoom}
         delRoom={delRoom}
-        className={`${notification === "" ? "right-[-25%]" : "right-5"}`}
+        className={notification !== "" ? "right-5" : "right-[-25%]"}
         notification={notification}
       />
       <DesktopNavigation
