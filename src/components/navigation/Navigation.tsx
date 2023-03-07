@@ -27,12 +27,12 @@ export const Navigation = (props: any) => {
   }
   function setRoom(data: any) {
     delRoom();
-    setChatRoom((prev: any) => data);
+    setChatRoom(data);
   }
 
   useEffect(() => {
     socket.on("createdRoom", (data: any) => {
-      setChatRoom((prev: any) => data);
+      setChatRoom(data);
     });
 
     return () => {
