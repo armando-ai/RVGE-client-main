@@ -53,7 +53,7 @@ const ChatRoom = (props: any) => {
     }, 250);
   };
   const sendMessage = async (message: string) => {
-    socket.emit("joinRooms", {});
+    
     // socket.emit("joinRooms", {});
     // console.log("mayberoom", socket);
     const rawmessage = { roomId: props.room.id, message: message };
