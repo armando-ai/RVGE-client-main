@@ -53,6 +53,7 @@ const ChatRoom = (props: any) => {
     }, 250);
   };
   const sendMessage = async (message: string) => {
+    socket.emit("joinRooms", {});
     // socket.emit("joinRooms", {});
     // console.log("mayberoom", socket);
     const rawmessage = { roomId: props.room.id, message: message };
@@ -82,7 +83,9 @@ const ChatRoom = (props: any) => {
   const elements = ChatMessages.map((message: any, index: number) => {
     if (message.user) {
       if (index === ChatMessages.length) {
-        updateHeight();
+        setTimeout(() => {
+          updateHeight();
+        }, 100);
       }
       return message.user.username === props.room.users[0].username ? (
         <OtherChat
@@ -97,7 +100,9 @@ const ChatRoom = (props: any) => {
       );
     } else {
       if (index === ChatMessages.length) {
-        updateHeight();
+        setTimeout(() => {
+          updateHeight();
+        }, 100);
       }
       return message.from === props.room.users[0].username ? (
         <OtherChat

@@ -265,7 +265,7 @@
 
   .growChat{
 
-    animation: grow 1s ease-in;
+    animation: grow 1s ;
     transition: 0.7s;
   }
   @keyframes grow {
