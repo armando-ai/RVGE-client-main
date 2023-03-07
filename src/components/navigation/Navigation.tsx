@@ -74,9 +74,8 @@ export const Navigation = (props: any) => {
           key={index}
           notification={notification}
           removeNotification={removeNotification}
-          className={`fixed top-[${
-            10 * index
-          }%] goLeft right-4 z-[9999] h-[10%] w-[24%]`}
+          top={index * 10}
+          className={`goLeft fixed right-4 z-[9999] mt-5 h-[10%] w-[24%]`}
         />
       ))}
 
