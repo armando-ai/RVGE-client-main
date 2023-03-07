@@ -10,7 +10,7 @@ const NotificationCard = (props: any) => {
   const router = useRouter();
   const createCurrentRoom = async () => {
     await getToken();
-    const data = await request("/getroom/" + props.chat.id, {
+    const data = await request("/getroom/" + props.notification.roomId, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -45,9 +45,9 @@ const NotificationCard = (props: any) => {
               <BellAlertIcon className="mr-auto h-7 w-7"></BellAlertIcon>
             )}
 
-            <div className="ml-auto h-full w-[80%]">
-              <h1 className="">{props.notification.from}</h1>
-              <p className=" text-xs">
+            <div className="ml-auto h-full  w-[80%] text-start">
+              <h1 className="text-start">{props.notification.from}</h1>
+              <p className="text-start text-xs">
                 {props.notification.type.includes("chat")
                   ? "Message: " + props.notification.message
                   : "Has sent you a trade"}
