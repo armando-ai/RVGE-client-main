@@ -12,11 +12,7 @@ const LinkStyles = "w-7 h-7 md:w-8 md:h-8";
 
 
 export const NavigationLinks = [
-  {
-    name: "Reports",
-    href: "/reports",
-    icon: CalendarIcon({ className: LinkStyles }),
-  },
+
   {
     name: "Games",
     href: "/allGames",
