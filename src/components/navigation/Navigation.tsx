@@ -44,13 +44,11 @@ export const Navigation = (props: any) => {
 
     socket.on("trades", (notification: any) => {
       console.log(notification);
-
-      setNotifications([...notifications, notification]);
+      setNotifications((prev: any) => [...prev, notification]);
     });
     socket.on("chats", (notification: any) => {
       console.log(notification);
-
-      setNotifications([...notifications, notification]);
+      setNotifications((prev: any) => [...prev, notification]);
     });
     return () => {
       socket.disconnect();
