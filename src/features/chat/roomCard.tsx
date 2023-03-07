@@ -40,10 +40,10 @@ const RoomCard = (props: any) => {
 
     setTimeout(() => {
       props.delRoom("");
-    }, 100);
+    }, 50);
     setTimeout(() => {
       props.setRoom(data);
-    }, 500);
+    }, 100);
   };
   return (
     <div id="card" onClick={createCurrentRoom}>

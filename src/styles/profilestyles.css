@@ -264,8 +264,9 @@
   }
 
   .growChat{
-    animation-delay: 0.5s;
+
     animation: grow 1s ease-in;
+    animation-delay: 0.5s!important;
     transition: 0.7s;
   }
   @keyframes grow {
