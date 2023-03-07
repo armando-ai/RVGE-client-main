@@ -121,8 +121,8 @@ const ChatRoom = (props: any) => {
       <div
         id="chatId"
         className={`${
-          openChats === true && "h-[60%!important]"
-        } smooth growChat absolute right-[30%] bottom-0 z-[9999] h-[6%] w-[25%] overflow-hidden rounded-md bg-slate-300 ease-in-out`}
+          openChats === true ? "h-[60%]" : "h-[6%]"
+        } smooth absolute right-[30%] bottom-0 z-[9999]  w-[25%] overflow-hidden rounded-md bg-slate-300 ease-in-out`}
       >
         <div className=" float-left h-[7vh] w-full cursor-pointer border-b-2 border-b-slate-900 bg-slate-400 ">
           <div
