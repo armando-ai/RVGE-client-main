@@ -84,7 +84,7 @@ const RoomCard = (props: any) => {
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            className="absolute ml-14 h-8 w-8 cursor-pointer text-red-500 hover:animate-bounce"
+            className="absolute ml-20 h-8 w-8 cursor-pointer text-red-500 hover:animate-bounce"
             onClick={async () => {
               props.removeChat(props.chat);
 
