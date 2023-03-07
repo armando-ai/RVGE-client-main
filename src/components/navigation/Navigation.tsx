@@ -68,7 +68,7 @@ export const Navigation = (props: any) => {
       {chatRoom !== "" && chatRoom && (
         <ChatRoom delRoom={delRoom} room={chatRoom}></ChatRoom>
       )}
-
+    
       <NotificationCard
         setRoom={setRoom}
         delRoom={delRoom}
