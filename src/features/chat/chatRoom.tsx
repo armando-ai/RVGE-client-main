@@ -75,7 +75,7 @@ const ChatRoom = (props: any) => {
   };
   const [ChatMessages, setChatMessages] = useState<any[]>([]);
 
-  if (props.room.messages) {
+  if (props.room.messages && ChatMessages.length === 0) {
     setChatMessages(props.room.messages);
   }
 
