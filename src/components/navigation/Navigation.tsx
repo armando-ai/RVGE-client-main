@@ -43,17 +43,17 @@ export const Navigation = (props: any) => {
     });
     socket.on("chats", (data: any) => {
       console.log(data);
-      setNotification(data)
-      setTimeout(()=>{
-        setNotification("")
-      },3500)
+      setNotification(data);
+      setTimeout(() => {
+        setNotification("");
+      }, 3500);
     });
     socket.on("trades", (data: any) => {
       console.log(data);
-      setNotification(data)
-      setTimeout(()=>{
-        setNotification("")
-      },3500)
+      setNotification(data);
+      setTimeout(() => {
+        setNotification("");
+      }, 3500);
     });
     return () => {
       socket.disconnect();
@@ -70,6 +70,8 @@ export const Navigation = (props: any) => {
       )}
 
       <NotificationCard
+        setRoom={setRoom}
+        delRoom={delRoom}
         className={`${notification === "" ? "right-[-25%]" : "right-5"}`}
         notification={notification}
       />
