@@ -55,9 +55,7 @@ export const Navigation = (props: any) => {
     };
   }, []);
   function removeNotification(notification: any) {
-    setTimeout(() => {
       setNotifications(notifications.filter((n: any) => n !== notification));
-    }, 6000);
   }
   const activeChats = [{}];
   return (
