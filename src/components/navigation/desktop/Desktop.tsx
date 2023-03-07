@@ -10,15 +10,15 @@ type Props = {
 };
 
 export const DesktopNavigation = ({ selected, links, className }: Props) => {
-  const [rawUser, setRawUser] = useState<any>();
-  const { data: session } = useSession();
-  if (rawUser === undefined && session !== undefined) {
-    setRawUser(session);
-  }
-  if (rawUser !== undefined && session !== undefined) {
-    // console.log(rawUser);
-    // console.log(session);
-  }
+  // const [rawUser, setRawUser] = useState<any>();
+  // const { data: session } = useSession();
+  // if (rawUser === undefined && session !== undefined) {
+  //   setRawUser(session);
+  // }
+  // if (rawUser !== undefined && session !== undefined) {
+  //   // console.log(rawUser);
+  //   // console.log(session);
+  // }
   return (
     <nav
       className={`${className} fixed left-6 top-[5%] flex
@@ -26,7 +26,7 @@ h-[90%] w-28 flex-col  rounded-md bg-slate-200/90
 pt-[4%]`}
     >
       <ul className={`flex h-full w-full flex-col `}>
-        {rawUser !== undefined && rawUser.verified === true && (
+        {/* {rawUser !== undefined && rawUser.verified === true && (
           <li>
             <Link
               className="relative mb-[50%] flex flex-col items-center justify-center text-center text-gray-500 duration-200 hover:text-black"
@@ -50,7 +50,7 @@ pt-[4%]`}
               <span className="overflow-hidden">{links.at(0)?.name}</span>
             </Link>
           </li>
-        )}
+        )} */}
         {links.map((link) => {
           return (
             <li key={link.name}>

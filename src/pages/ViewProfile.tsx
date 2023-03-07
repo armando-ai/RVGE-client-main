@@ -20,11 +20,11 @@ export const ViewProfile = (props: any) => {
     return "";
   };
   const [signUpUser, setUser] = useState<any>(getUser());
-  const [rawUser, setRawUser] = useState<any>();
-  const { data: session } = useSession();
-  if (rawUser === undefined && session !== undefined) {
-    setRawUser(session);
-  }
+  // const [rawUser, setRawUser] = useState<any>();
+  // const { data: session } = useSession();
+  // if (rawUser === undefined && session !== undefined) {
+  //   setRawUser(session);
+  // }
   const [email, setEmail] = useState<string>("");
   const [index, setIndex] = useState<number>(0);
   const forms = [];
@@ -32,16 +32,6 @@ export const ViewProfile = (props: any) => {
   const [title, setTitle] = useState<string>("");
   const [bio, setBio] = useState<boolean>(false);
 
-  function updatePopUp(index: number, title: string) {
-    setPopUp(!popUp);
-    setPopUpContent(index, title);
-  }
-  function addGame(game: any) {
-    //send
-    signUpUser.library.push(game);
-    setUser(signUpUser);
-    console.log(signUpUser.library);
-  }
   function setPopUpContent(state: number, title: string) {
     setTitle(title);
     setIndex(state);
@@ -87,7 +77,7 @@ export const ViewProfile = (props: any) => {
             <Image priority={true} width={100} height={100} alt="" src={icon} />
             <h1>{signUpUser.username}</h1>
 
-            {rawUser?.admin == true && (
+            {/* {rawUser?.admin == true && (
               <div className="ml-auto flex w-40 justify-end rounded-md border-2 border-slate-900">
                 <h1
                   className="cursor-pointer p-[2px] font-[200!important] "
@@ -98,7 +88,7 @@ export const ViewProfile = (props: any) => {
                   Delete User
                 </h1>
               </div>
-            )}
+            )} */}
           </div>
           <div className="bio overflow-hidden">
             <p>{signUpUser.bio}</p>
