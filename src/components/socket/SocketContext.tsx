@@ -23,10 +23,13 @@ const SocketProvider = ({ children }: SocketProviderProps) => {
     });
   } else {
     socket = io(`${process.env.NEXT_PUBLIC_WS_URL}`);
+    setTimeout(() => {
+      socket.emit("notifications", {});
+      socket.emit("joinNotifications", {});
+    }, 1000);
   }
 
   useEffect(() => {
-    
     return () => {
       socket.disconnect();
     };

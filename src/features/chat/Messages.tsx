@@ -6,6 +6,7 @@ import {
 } from "@heroicons/react/24/outline";
 import RoomCard from "./roomCard";
 import { useSocket } from "src/components/socket/SocketContext";
+import { useSession } from "src/hooks";
 
 const Messages = (props: any) => {
   const socket = useSocket();
@@ -16,15 +17,18 @@ const Messages = (props: any) => {
   //     window.alert("hello");
   //   });
   // }, []);
-  function removeChat(chatToRemove:any){
-    setChats((prev: any[]) => prev.filter((chat: any) => chat !== chatToRemove));
+  function removeChat(chatToRemove: any) {
+    setChats((prev: any[]) =>
+      prev.filter((chat: any) => chat !== chatToRemove)
+    );
   }
-
+  const [User, setUser] = useState<any>();
   useEffect(() => {
-    socket.on("joinedRooms", (data: any) => {
+    socket.on("joinedRooms", async (data: any) => {
       console.table(data);
       const chatSessions = JSON.parse(JSON.stringify(data));
-
+      const { data: session } = await useSession();
+      setUser(session);
       setChats(chatSessions);
     });
 
@@ -64,9 +68,17 @@ const Messages = (props: any) => {
       </div>
 
       <div id="messageRooms" className="h-[52vh] overflow-y-auto">
-        {chats.map((chat: any) => (
-          <RoomCard setRoom={props.setRoom} delRoom={props.delRoom} chat={chat} removeChat={removeChat}/>
-        ))}
+        {chats.map((chat: any) => {
+          if (chat.id === User.id) {
+          } else {
+            <RoomCard
+              setRoom={props.setRoom}
+              delRoom={props.delRoom}
+              chat={chat}
+              removeChat={removeChat}
+            />;
+          }
+        })}
       </div>
     </div>
   );

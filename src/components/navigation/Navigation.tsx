@@ -34,7 +34,12 @@ export const Navigation = (props: any) => {
     socket.on("createdRoom", (data: any) => {
       setChatRoom(data);
     });
-
+    socket.on("chats", (data: any) => {
+      console.log(data);
+    });
+    socket.on("trades", (data: any) => {
+      console.log(data);
+    });
     return () => {
       socket.disconnect();
     };

@@ -26,7 +26,7 @@ const TradeCard = (props: any) => {
 
   return (
     <div className="flex flex-col">
-      <div className=" flex h-auto w-full flex-row">
+      <div className=" mb-1 flex h-auto w-[80%] flex-row">
         <ChatBubbleLeftEllipsisIcon
           onClick={createRoom}
           className=" mr-auto w-9 cursor-pointer"
