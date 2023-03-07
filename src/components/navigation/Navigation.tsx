@@ -42,22 +42,26 @@ export const Navigation = (props: any) => {
       setChatRoom(data);
     });
     socket.on("chats", (data: any) => {
-      console.log(data);
-      setNotification((prevState: any) => [...prevState, data]);
       setTimeout(() => {
-        setNotification((prevState: any[]) =>
-          prevState.filter((n: any) => n !== data)
-        );
-      }, 6000);
+        console.log(data);
+        setNotification((prevState: any) => [...prevState, data]);
+        setTimeout(() => {
+          setNotification((prevState: any[]) =>
+            prevState.filter((n: any) => n !== data)
+          );
+        }, 6000);
+      }, 1000);
     });
     socket.on("trades", (data: any) => {
-      console.log(data);
-      setNotification((prevState: any) => [...prevState, data]);
       setTimeout(() => {
-        setNotification((prevState: any[]) =>
-          prevState.filter((n: any) => n !== data)
-        );
-      }, 6000);
+        console.log(data);
+        setNotification((prevState: any) => [...prevState, data]);
+        setTimeout(() => {
+          setNotification((prevState: any[]) =>
+            prevState.filter((n: any) => n !== data)
+          );
+        }, 6000);
+      }, 1000);
     });
     return () => {
       socket.disconnect();
@@ -77,7 +81,7 @@ export const Navigation = (props: any) => {
             key={index}
             setRoom={setRoom}
             delRoom={delRoom}
-            className={index === notification.length - 1 ? "goLeft" : ""}
+            className={index === notification.length ? "goLeft" : ""}
             notification={message}
           />
         ))}
