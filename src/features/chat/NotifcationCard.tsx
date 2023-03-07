@@ -25,7 +25,7 @@ const NotificationCard = (props: any) => {
       props.setRoom(data);
     }, 50);
   };
-  const value = "top-[" + props.top + "px]";
+  const value = "top-[" + props.top + "px!important]";
   return (
     <div
       onClick={() => {
