@@ -42,18 +42,22 @@ export const Navigation = (props: any) => {
       setChatRoom(data);
     });
     socket.on("chats", (data: any) => {
-      console.log(data);
-      setNotification(data);
       setTimeout(() => {
-        setNotification("");
-      }, 6000);
+        console.log(data);
+        setNotification(data);
+        setTimeout(() => {
+          setNotification("");
+        }, 6000);
+      }, 1000);
     });
     socket.on("trades", (data: any) => {
-      console.log(data);
-      setNotification(data);
       setTimeout(() => {
-        setNotification("");
-      }, 6000);
+        console.log(data);
+        setNotification(data);
+        setTimeout(() => {
+          setNotification("");
+        }, 6000);
+      }, 1000);
     });
     return () => {
       socket.disconnect();
