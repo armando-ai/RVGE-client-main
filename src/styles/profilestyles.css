@@ -285,16 +285,16 @@
   }
   @keyframes left {
     0%{
-      left:25%;
+      right:-25%;
     }
     20%{
-      left:1.25em;
+      right:1.25em;
     }
     90%{
-      left:1.25em;
+      right:1.25em;
     }
     100%{
-      left:25%;
+      right:-25%;
     }
 
 

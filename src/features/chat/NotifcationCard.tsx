@@ -36,7 +36,7 @@ const NotificationCard = (props: any) => {
                   router.push("/rtrades");
                 };
           }}
-          className={`${props.className} relative left-[25%] z-[9999] mt-5 h-[10%] w-full cursor-pointer flex-col content-start justify-start overflow-hidden rounded-md bg-slate-400 p-[1%]`}
+          className={`${props.className} absolute top-5 right-[-25%] z-[9999] h-[10%] w-[24%] cursor-pointer flex-col content-start justify-start overflow-hidden rounded-md bg-slate-400 p-[1%]`}
         >
           <div className="flex-row flex w-full overflow-hidden p-[1%]">
             {props.notification.type.includes("chat") ? (
