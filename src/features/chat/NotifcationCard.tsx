@@ -25,6 +25,7 @@ const NotificationCard = (props: any) => {
       props.setRoom(data);
     }, 50);
   };
+  props.removeNotification(props.notification);
   return (
     <div
       onClick={() => {

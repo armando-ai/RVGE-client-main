@@ -46,23 +46,21 @@ export const Navigation = (props: any) => {
       console.log(notification);
 
       setNotifications([...notifications, notification]);
-      setTimeout(() => {
-        setNotifications(notifications.filter((n: any) => n !== notification));
-      }, 6000);
     });
     socket.on("chats", (notification: any) => {
       console.log(notification);
 
       setNotifications([...notifications, notification]);
-      setTimeout(() => {
-        setNotifications(notifications.filter((n: any) => n !== notification));
-      }, 6000);
     });
     return () => {
       socket.disconnect();
     };
   }, []);
-
+  function removeNotification(notification: any) {
+    setTimeout(() => {
+      setNotifications(notifications.filter((n: any) => n !== notification));
+    }, 6000);
+  }
   const activeChats = [{}];
   return (
     <div>
@@ -75,9 +73,10 @@ export const Navigation = (props: any) => {
         <NotificationCard
           key={index}
           notification={notification}
-          className={`fixed top-${
-            index === 0 ? 5 : index * 12 + 5
-          } right-4 z-[9999] h-[10%] w-[24%]`}
+          removeNotification={removeNotification}
+          className={`fixed top-[${
+            10 * index
+          }%] goLeft right-4 z-[9999] h-[10%] w-[24%]`}
         />
       ))}
 
