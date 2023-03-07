@@ -84,9 +84,6 @@ const ChatRoom = (props: any) => {
   const elements = ChatMessages.map((message: any, index: number) => {
     if (message.user) {
       if (index === ChatMessages.length) {
-        setTimeout(() => {
-          updateHeight();
-        }, 100);
       }
       return message.user.username === props.room.users[0].username ? (
         <OtherChat
@@ -121,6 +118,13 @@ const ChatRoom = (props: any) => {
 
   function delChat(id: string) {
     props.delRoom();
+  }
+  const [first, setfirst] = useState(false);
+  if (ChatMessages.length > 0 && first === false) {
+    setTimeout(() => {
+      updateHeight();
+    }, 100);
+    setfirst(true);
   }
   return (
     <div id="chatRoom">
