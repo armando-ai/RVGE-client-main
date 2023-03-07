@@ -29,11 +29,6 @@ export const Navigation = (props: any) => {
     delRoom();
     setChatRoom(data);
   }
-  if (sendNotifications === false) {
-    socket.emit("notifications", {});
-    socket.emit("joinNotifications", {});
-    setSendNotifications(true);
-  }
 
   useEffect(() => {
     socket.on("createdRoom", (data: any) => {
