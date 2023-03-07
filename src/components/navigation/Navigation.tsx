@@ -59,7 +59,7 @@ export const Navigation = (props: any) => {
   function removeNotification(notification: any) {
     setTimeout(() => {
       setNotifications(
-        notifications.filter((n: any) => n.createdAt !== notification.createdAt)
+        notifications.filter((n: any) => n !== notification)
       );
     }, 6000);
   }

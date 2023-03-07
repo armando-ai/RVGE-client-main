@@ -26,7 +26,7 @@ const NotificationCard = (props: any) => {
     }, 50);
   };
 
-  props.top = "top-[" + props.top + "%]";
+  props.top = "top-[" + props.top + "vh]";
   return (
     <div
       onClick={() => {
