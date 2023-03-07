@@ -279,7 +279,7 @@
   }
   .goLeft{
 
-    animation: left 5s forwards;
+    animation: left 6s forwards;
 
     transition: 0.7s;
   }

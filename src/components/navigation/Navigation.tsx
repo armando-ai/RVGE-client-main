@@ -46,14 +46,14 @@ export const Navigation = (props: any) => {
       setNotification(data);
       setTimeout(() => {
         setNotification("");
-      }, 5000);
+      }, 6000);
     });
     socket.on("trades", (data: any) => {
       console.log(data);
       setNotification(data);
       setTimeout(() => {
         setNotification("");
-      }, 5000);
+      }, 6000);
     });
     return () => {
       socket.disconnect();
