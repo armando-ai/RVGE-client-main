@@ -45,10 +45,12 @@ export const Navigation = (props: any) => {
     socket.on("trades", (notification: any) => {
       console.log(notification);
       setNotifications((prev: any) => [...prev, notification]);
+      removeNotification(notification);
     });
     socket.on("chats", (notification: any) => {
       console.log(notification);
       setNotifications((prev: any) => [...prev, notification]);
+      removeNotification(notification);
     });
     return () => {
       socket.disconnect();
@@ -56,7 +58,9 @@ export const Navigation = (props: any) => {
   }, []);
   function removeNotification(notification: any) {
     setTimeout(() => {
-      setNotifications(notifications.filter((n: any) => n !== notification));
+      setNotifications(
+        notifications.filter((n: any) => n.createdAt !== notification.createdAt)
+      );
     }, 6000);
   }
   const activeChats = [{}];
@@ -74,10 +78,10 @@ export const Navigation = (props: any) => {
             key={index}
             notification={notification}
             removeNotification={removeNotification}
-       
-            className={`goLeft  top-${
-              index * 12 + 5
-            } fixed right-4 z-[9999] mt-5 h-[10%] w-[24%]`}
+            top={index * 10}
+            className={`goLeft  top-[${
+              index * 10
+            }%] fixed right-4 z-[9999] mt-5 h-[10%] w-[24%]`}
           />
         );
       })}
