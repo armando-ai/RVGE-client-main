@@ -69,15 +69,18 @@ export const Navigation = (props: any) => {
         <ChatRoom delRoom={delRoom} room={chatRoom}></ChatRoom>
       )}
 
-      {notifications.map((notification: { id: any }, index: number) => (
-        <NotificationCard
-          key={index}
-          notification={notification}
-          removeNotification={removeNotification}
-          top={index * 10}
-          className={`goLeft fixed right-4 z-[9999] mt-5 h-[10%] w-[24%]`}
-        />
-      ))}
+      {notifications.map((notification: { id: any }, index: number) => {
+        console.log(index);
+        return (
+          <NotificationCard
+            key={index}
+            notification={notification}
+            removeNotification={removeNotification}
+            top={index * 10}
+            className={`goLeft fixed right-4 z-[9999] mt-5 h-[10%] w-[24%]`}
+          />
+        );
+      })}
 
       <DesktopNavigation
         selected={selected}
