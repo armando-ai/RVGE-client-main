@@ -39,6 +39,9 @@ export const Navigation = (props: any) => {
   const [notifications, setNotifications] = useState<any>([]);
   const elements = notifications.map(
     (notification: { id: any; animated: boolean }, index: number) => {
+      if (index === notifications.length - 1) {
+        removeNotification(notifications.at(0));
+      }
       return (
         <NotificationCard
           delRoom={delRoom}
