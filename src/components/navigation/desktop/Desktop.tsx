@@ -10,14 +10,7 @@ type Props = {
 };
 
 export const DesktopNavigation = ({ selected, links, className }: Props) => {
-  const [rawUser, setRawUser] = useState<any>();
-  const { data: session } = useSession();
-  if (rawUser === undefined && session !== undefined) {
-    setRawUser(session);
-  }
-  if (rawUser !== undefined && session !== undefined) {
-    localStorage.setItem("user", rawUser.id);
-  }
+
   return (
     <nav
       className={`${className} fixed left-6 top-[5%] flex
