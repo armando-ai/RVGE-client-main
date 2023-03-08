@@ -37,7 +37,7 @@ export const Navigation = (props: any) => {
     }, 2000);
   }
   async function sendEmit() {
-    socket.emit("notifications",  { uuid :localStorage.getItem("uuid") });
+    socket.emit("notifications", { uuid: localStorage.getItem("uuid") });
     socket.emit("joinNotifications", { uuid: localStorage.getItem("uuid") });
 
     setSendNotifications(true);
@@ -48,6 +48,7 @@ export const Navigation = (props: any) => {
       setChatRoom(data);
     });
     socket.on("uuid", (data: any) => {
+      console.log("we got", data);
       localStorage.setItem("uuid", data);
     });
     socket.on("trades", (notification: any) => {
