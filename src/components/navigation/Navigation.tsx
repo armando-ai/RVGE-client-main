@@ -61,12 +61,14 @@ export const Navigation = (props: any) => {
     };
   }, []);
   function removeNotification(notification: any) {
+    const updatedItems = notifications.map((item: any) => {
+      return {
+        ...item,
+        animated: true,
+      };
+    });
+    setNotifications(updatedItems);
     setTimeout(async () => {
-      const updatedItems = notifications.map((item: any) => {
-        return { ...item, animated: true };
-      });
-
-      await setNotifications(updatedItems);
       setNotifications(notifications.filter((n: any) => n !== notification));
     }, 5000);
   }
@@ -88,8 +90,8 @@ export const Navigation = (props: any) => {
             <NotificationCard
               notification={notification}
               removeNotification={removeNotification}
+              className={`${notification.animated === false ? "goLeft" : ""}`}
               top={index * 100}
-              animated={notification.animated}
             />
           );
         }
