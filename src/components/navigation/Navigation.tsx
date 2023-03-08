@@ -41,7 +41,7 @@ export const Navigation = (props: any) => {
   useEffect(() => {
     socket.on("connect", (data: any) => {
       console.log(data);
-      console.log(socket);
+      console.log(socket); 
       socket.removeAllListeners();
     });
     socket.on("createdRoom", (data: any) => {
