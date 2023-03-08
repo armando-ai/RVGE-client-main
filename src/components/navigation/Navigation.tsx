@@ -50,11 +50,13 @@ export const Navigation = (props: any) => {
 
     socket.on("trades", (notification: any) => {
       notification.animated = false;
+      notification.top = 0;
       console.log(notification);
       setNotifications((prev: any) => [...prev, notification]);
     });
     socket.on("chats", (notification: any) => {
       notification.animated = false;
+      notification.top = 0;
       console.log(notification);
       setNotifications((prev: any) => [...prev, notification]);
     });
@@ -65,6 +67,11 @@ export const Navigation = (props: any) => {
   function removeNotification(notification: any) {
     const array = [];
     for (let x = 0; x < notifications.length - 1; x++) {
+      if (x !== 0) {
+        notification.top = x - 1;
+      } else {
+        notification.top = 0;
+      }
       if (notifications[x] === notification) {
         notification.delete = true;
       }
@@ -95,7 +102,7 @@ export const Navigation = (props: any) => {
               setRoom={setRoom}
               notification={notification}
               removeNotification={removeNotification}
-              top={index * 100}
+              top={notification.top * 100}
             />
           );
         })}
