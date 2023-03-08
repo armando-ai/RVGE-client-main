@@ -32,16 +32,12 @@ export const Navigation = (props: any) => {
     setChatRoom(data);
   }
   if (sendNotifications === false) {
-    setTimeout(() => {
-      sendEmit();
-    }, 2000);
-  }
-  async function sendEmit() {
     socket.emit("notifications", { uuid: localStorage.getItem("uuid") });
     socket.emit("joinNotifications", { uuid: localStorage.getItem("uuid") });
 
     setSendNotifications(true);
   }
+
   const [notifications, setNotifications] = useState<any>([]);
   useEffect(() => {
     socket.on("createdRoom", (data: any) => {
