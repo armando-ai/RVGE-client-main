@@ -67,13 +67,13 @@ export const Navigation = (props: any) => {
         <ChatRoom delRoom={delRoom} room={chatRoom}></ChatRoom>
       )}
 
-      {notifications.map((notification: { id: any }, index: number) => {
+      {notifications.map((notification: any, index: number) => {
         if (index === notifications.length - 1) {
           removeNotification(notifications.at(0));
         }
         return (
           <NotificationCard
-            key={index}
+            key={notification.message + index}
             notification={notification}
             removeNotification={removeNotification}
             top={index * 100}
