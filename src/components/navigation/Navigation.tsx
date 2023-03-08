@@ -37,22 +37,7 @@ export const Navigation = (props: any) => {
     setSendNotifications(true);
   }
   const [notifications, setNotifications] = useState<any>([]);
-  const elements = notifications.map(
-    (notification: { id: any; animated: boolean }, index: number) => {
-      if (index === notifications.length - 1) {
-        removeNotification(notifications.at(0));
-      }
-      return (
-        <NotificationCard
-          delRoom={delRoom}
-          setRoom={setRoom}
-          notification={notification}
-          removeNotification={removeNotification}
-          top={index * 100}
-        />
-      );
-    }
-  );
+
 
   useEffect(() => {
     socket.on("connect", (data: any) => {
@@ -97,7 +82,22 @@ export const Navigation = (props: any) => {
       {chatRoom !== "" && chatRoom && (
         <ChatRoom delRoom={delRoom} room={chatRoom}></ChatRoom>
       )}
-      {elements}
+      {notifications.map(
+    (notification: { id: any; animated: boolean }, index: number) => {
+      if (index === notifications.length - 1) {
+        removeNotification(notifications.at(0));
+      }
+      return (
+        <NotificationCard
+          delRoom={delRoom}
+          setRoom={setRoom}
+          notification={notification}
+          removeNotification={removeNotification}
+          top={index * 100}
+        />
+      );
+    }
+  )}
 
       <DesktopNavigation
         selected={selected}

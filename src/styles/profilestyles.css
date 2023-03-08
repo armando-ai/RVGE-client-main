@@ -279,7 +279,7 @@
   }
   .goLeft{
 
-    animation: left 6s forwards;
+    animation: left 3s forwards;
 
     transition: 0.7s;
   }
@@ -295,7 +295,7 @@
   }
   .goRight{
 
-    animation: right 6s forwards;
+    animation: right 3s forwards;
 
     transition: 0.7s;
   }
@@ -306,6 +306,8 @@
     }
     to{
       right:-25%;
+      height:0!important;
+      margin:0!important;
       opacity:0;
     }
 
