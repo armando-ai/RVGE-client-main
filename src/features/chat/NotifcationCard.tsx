@@ -3,7 +3,7 @@ import {
   ChatBubbleBottomCenterTextIcon,
 } from "@heroicons/react/24/outline";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { getToken, request } from "src/utils";
 
 const NotificationCard = (props: any) => {
@@ -26,14 +26,13 @@ const NotificationCard = (props: any) => {
       props.setRoom(data);
     }, 50);
   };
+  const [animated, setAnimated] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      props.removeNotification(props.notification);
-    }, 5000);
-
-    return () => clearTimeout(timer);
-  }, [props.notification, props.removeNotification]);
+    if (props.animated === true && animated === false) {
+      setAnimated(true);
+    }
+  }, [props.animated, animated]);
 
   const handleClick = () => {
     if (props.notification.type.includes("chat")) {
@@ -48,7 +47,9 @@ const NotificationCard = (props: any) => {
   return (
     <div
       onClick={handleClick}
-      className={` goLeft  fixed right-4 z-[9999] ${value} mt-5 h-[10%] w-[24%] cursor-pointer  flex-col content-start justify-start overflow-hidden rounded-md bg-slate-400 p-[1%]`}
+      className={` ${
+        animated ? "goLeft" : ""
+      }  fixed right-4 z-[9999] ${value} mt-5 h-[10%] w-[24%] cursor-pointer  flex-col content-start justify-start overflow-hidden rounded-md bg-slate-400 p-[1%]`}
       style={{ top: `${top}px` }}
     >
       <div className="flex w-full flex-row overflow-hidden p-[1%]">
