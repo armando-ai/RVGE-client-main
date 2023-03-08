@@ -68,9 +68,8 @@ export const Navigation = (props: any) => {
     //   };
     // });
     // setNotifications(updatedItems);
-    setTimeout(() => {
-      setNotifications(notifications.filter((n: any) => n !== notification));
-    }, 5000);
+
+    setNotifications(notifications.filter((n: any) => n !== notification));
   }
   const activeChats = [{}];
   return (
@@ -82,7 +81,6 @@ export const Navigation = (props: any) => {
       {notifications !== undefined &&
         notifications.map(
           (notification: { id: any; animated: boolean }, index: number) => {
-            console.log(notification);
             if (index === notifications.length - 1) {
               removeNotification(notifications.at(0));
             }
