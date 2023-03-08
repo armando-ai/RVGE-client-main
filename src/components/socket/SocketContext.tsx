@@ -17,16 +17,16 @@ const SocketProvider = ({ children }: SocketProviderProps) => {
   let socket: any;
 
   // Retrieve the socket instance from localStorage
-  const socketData = localStorage.getItem("socket");
-  if (typeof window !== "undefined" && socketData) {
+
+  if (typeof window !== "undefined" ) {
     socket = io(`${process.env.NEXT_PUBLIC_WS_URL}`, {
       extraHeaders: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     });
-
+    const socketData = localStorage.getItem("socket");
     // Restore the socket instance's properties
-    const { id, connected } = JSON.parse(socketData);
+    const { id, connected } = JSON.parse(socketData+"");
     socket.id = id;
     if (connected) {
       socket.connect();
