@@ -80,22 +80,23 @@ export const Navigation = (props: any) => {
       {chatRoom !== "" && chatRoom && (
         <ChatRoom delRoom={delRoom} room={chatRoom}></ChatRoom>
       )}
-      <div className="fixed right-5 top-5 flex h-auto w-[24%] flex-col">
-        {notifications.map((notification: any, index: number) => {
-          if (index === notifications.length - 1) {
-            removeNotification(notifications.at(0));
-          }
-          return (
-            <NotificationCard
-              delRoom={delRoom}
-              setRoom={setRoom}
-              notification={notification}
-              removeNotification={removeNotification}
-              top={index * 100}
-            />
-          );
-        })}
+      <div>
+      {notifications.map((notification: any, index: number) => {
+        if (index === notifications.length - 1) {
+          removeNotification(notifications.at(0));
+        }
+        return (
+          <NotificationCard
+            delRoom={delRoom}
+            setRoom={setRoom}
+            notification={notification}
+            removeNotification={removeNotification}
+            top={index * 100}
+          />
+        );
+      })}
       </div>
+
 
       <DesktopNavigation
         selected={selected}
