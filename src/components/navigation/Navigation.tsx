@@ -63,14 +63,18 @@ export const Navigation = (props: any) => {
     };
   }, [socket]);
   function removeNotification(notification: any) {
+    const array = [];
+    for (let x = 0; x < notifications.length - 1; x++) {
+      if (notifications[x] === notification) {
+        notification.delete = true;
+      }
+      notifications[x].animated = true;
+
+      array.push(notifications[x]);
+    }
+    setNotifications(array);
     setTimeout(() => {
       setNotifications(notifications.filter((n: any) => n !== notification));
-      const array = [];
-      for (let x = 0; x < notifications.length - 1; x++) {
-        notifications[x].animated = true;
-        array.push(notifications[x]);
-      }
-      setNotifications(array);
     }, 6000);
   }
   const activeChats = [{}];
@@ -81,22 +85,21 @@ export const Navigation = (props: any) => {
         <ChatRoom delRoom={delRoom} room={chatRoom}></ChatRoom>
       )}
       <div>
-      {notifications.map((notification: any, index: number) => {
-        if (index === notifications.length - 1) {
-          removeNotification(notifications.at(0));
-        }
-        return (
-          <NotificationCard
-            delRoom={delRoom}
-            setRoom={setRoom}
-            notification={notification}
-            removeNotification={removeNotification}
-            top={index * 100}
-          />
-        );
-      })}
+        {notifications.map((notification: any, index: number) => {
+          if (index === notifications.length - 1) {
+            removeNotification(notifications.at(0));
+          }
+          return (
+            <NotificationCard
+              delRoom={delRoom}
+              setRoom={setRoom}
+              notification={notification}
+              removeNotification={removeNotification}
+              top={index * 100}
+            />
+          );
+        })}
       </div>
-
 
       <DesktopNavigation
         selected={selected}
