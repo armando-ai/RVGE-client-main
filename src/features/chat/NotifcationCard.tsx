@@ -28,11 +28,11 @@ const NotificationCard = (props: any) => {
   };
   const [animated, setAnimated] = useState(false);
 
-  useEffect(() => {
+
     if (props.animated === true && animated === false) {
       setAnimated(true);
     }
-  }, [props.animated, animated]);
+
 
   const handleClick = () => {
     if (props.notification.type.includes("chat")) {
@@ -48,7 +48,7 @@ const NotificationCard = (props: any) => {
     <div
       onClick={handleClick}
       className={` ${
-        animated ? "goLeft" : ""
+        animated===false ? "goLeft" : ""
       }  fixed right-4 z-[9999] ${value} mt-5 h-[10%] w-[24%] cursor-pointer  flex-col content-start justify-start overflow-hidden rounded-md bg-slate-400 p-[1%]`}
       style={{ top: `${top}px` }}
     >
