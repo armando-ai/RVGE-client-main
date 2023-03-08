@@ -44,17 +44,11 @@ export const Navigation = (props: any) => {
 
     socket.on("trades", (notification: any) => {
       console.log(notification);
-      setNotifications((prev: any) => [
-        ...prev,
-        ...notification
-      ]);
+      setNotifications((prev: any) => [...prev, notification]);
     });
     socket.on("chats", (notification: any) => {
       console.log(notification);
-      setNotifications((prev: any) => [
-        ...prev,
-        ...notification,
-      ]);
+      setNotifications((prev: any) => [...prev, notification]);
     });
     return () => {
       socket.disconnect();
@@ -68,7 +62,7 @@ export const Navigation = (props: any) => {
     //   };
     // });
     // setNotifications(updatedItems);
-    setTimeout( () => {
+    setTimeout(() => {
       setNotifications(notifications.filter((n: any) => n !== notification));
     }, 5000);
   }
@@ -90,7 +84,6 @@ export const Navigation = (props: any) => {
             <NotificationCard
               notification={notification}
               removeNotification={removeNotification}
-             
               top={index * 100}
             />
           );
