@@ -68,7 +68,7 @@ export const Navigation = (props: any) => {
       };
     });
     setNotifications(updatedItems);
-    setTimeout(async () => {
+    setTimeout( () => {
       setNotifications(notifications.filter((n: any) => n !== notification));
     }, 5000);
   }
