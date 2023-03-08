@@ -32,23 +32,23 @@ export const Navigation = (props: any) => {
     setChatRoom(data);
   }
   if (sendNotifications === false) {
-    sendEmit();
+    setTimeout(() => {
+      sendEmit();
+    }, 2000);
   }
   async function sendEmit() {
-    const { data: session } = await useSession();
-
     socket.emit(
       "notifications",
       {},
       {
-        userId: session?.id,
+        userId: localStorage.getItem("user"),
       }
     );
     socket.emit(
       "joinNotifications",
       {},
       {
-        userId: session?.id,
+        userId: localStorage.getItem("user"),
       }
     );
 
