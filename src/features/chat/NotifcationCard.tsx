@@ -38,16 +38,16 @@ const NotificationCard = (props: any) => {
       } fixed right-4 z-[9999] ${value} smooth mt-5 h-[10%] w-[24%] cursor-pointer  flex-col content-start justify-start overflow-hidden rounded-md bg-slate-400 p-[1%]`}
       style={{ top: `${props.top}px` }}
     >
-      <div className="flex w-full flex-row overflow-hidden p-[1%]">
+      <div className="flex w-full flex-row overflow-hidden ">
         {props.notification.type.includes("chat") ? (
           <ChatBubbleBottomCenterTextIcon className="mr-auto h-7 w-7" />
         ) : (
           <BellAlertIcon className="mr-auto h-7 w-7"></BellAlertIcon>
         )}
 
-        <div className="mr-auto h-full  w-[80%] text-start">
-          <h1 className="text-start text-2xl">{props.notification.from}</h1>
-          <p className="text-start text-lg">
+        <div className="mr-auto mb-1 w-[80%] text-start">
+          <h1 className="text-start text-[1.2em]">{props.notification.from}</h1>
+          <p className="text-start text-[1em]">
             {props.notification.type.includes("chat")
               ? "Message: " + props.notification.message
               : "Has sent you a trade"}
