@@ -39,7 +39,7 @@ export const Navigation = (props: any) => {
 
   const [notifications, setNotifications] = useState<any>([]);
   useEffect(() => {
-    socket.on("connection", (data: any) => {
+    socket.on("connect", (data: any) => {
       console.log(data);
       console.log(socket);
       socket.removeAllListeners();
