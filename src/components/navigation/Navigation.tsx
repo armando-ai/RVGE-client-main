@@ -45,17 +45,20 @@ export const Navigation = (props: any) => {
     socket.on("trades", (notification: any) => {
       console.log(notification);
       setNotifications((prev: any) => [...prev, notification]);
+
+      removeNotification(notification);
     });
     socket.on("chats", (notification: any) => {
       console.log(notification);
       setNotifications((prev: any) => [...prev, notification]);
+      removeNotification(notification);
     });
     return () => {
       socket.disconnect();
     };
   }, []);
   function removeNotification(notification: any) {
-      setNotifications(notifications.filter((n: any) => n !== notification));
+    setNotifications(notifications.filter((n: any) => n !== notification));
   }
   const activeChats = [{}];
   return (
@@ -66,9 +69,6 @@ export const Navigation = (props: any) => {
       )}
 
       {notifications.map((notification: { id: any }, index: number) => {
-        if (index === notifications.length - 1) {
-          removeNotification(notifications[0]);
-        } 
         return (
           <NotificationCard
             key={index}
