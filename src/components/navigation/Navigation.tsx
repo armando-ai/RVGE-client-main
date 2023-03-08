@@ -91,24 +91,24 @@ export const Navigation = (props: any) => {
       {chatRoom !== "" && chatRoom && (
         <ChatRoom delRoom={delRoom} room={chatRoom}></ChatRoom>
       )}
-
-      {notifications.map(
-        (notification: { id: any; animated: boolean }, index: number) => {
-          console.log(notification);
-          if (index === notifications.length - 1) {
-            removeNotification(notifications.at(0));
+      {notifications !== undefined &&
+        notifications.map(
+          (notification: { id: any; animated: boolean }, index: number) => {
+            console.log(notification);
+            if (index === notifications.length - 1) {
+              removeNotification(notifications.at(0));
+            }
+            return (
+              <NotificationCard
+                delRoom={delRoom}
+                setRoom={setRoom}
+                notification={notification}
+                removeNotification={removeNotification}
+                top={index * 100}
+              />
+            );
           }
-          return (
-            <NotificationCard
-              delRoom={delRoom}
-              setRoom={setRoom}
-              notification={notification}
-              removeNotification={removeNotification}
-              top={index * 100}
-            />
-          );
-        }
-      )}
+        )}
 
       <DesktopNavigation
         selected={selected}
