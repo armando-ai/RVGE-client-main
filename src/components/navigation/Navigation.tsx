@@ -68,7 +68,7 @@ export const Navigation = (props: any) => {
       )}
 
       {notifications.map((notification: { id: any }, index: number) => {
-        if (index === notifications.length) {
+        if (index === notifications.length - 1-1) {
           removeNotification(notifications.at(0));
         }
         return (
