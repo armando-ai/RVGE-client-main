@@ -40,8 +40,8 @@ export const Navigation = (props: any) => {
   const [notifications, setNotifications] = useState<any>([]);
   useEffect(() => {
     socket.on("connect", (data: any) => {
-      console.log(data);
-      console.log(socket); 
+      console.log("connected");
+      console.log(socket);
       socket.removeAllListeners();
     });
     socket.on("createdRoom", (data: any) => {
@@ -57,9 +57,9 @@ export const Navigation = (props: any) => {
       setNotifications((prev: any) => [...prev, notification]);
     });
     return () => {
-      socket.disconnect();
+      socket.off("connect");
     };
-  }, []);
+  }, [socket]);
   function removeNotification(notification: any) {
     // const updatedItems = notifications.map((item: any) => {
     //   return {

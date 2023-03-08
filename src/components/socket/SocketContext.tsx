@@ -26,8 +26,13 @@ const SocketProvider = ({ children }: SocketProviderProps) => {
   }
 
   useEffect(() => {
+    socket.on("connect", (data: any) => {
+      console.log("connected");
+      console.log(socket);
+      socket.removeAllListeners();
+    });
     return () => {
-      // socket.disconnect();
+      socket.disconnect();
     };
   }, []);
 
