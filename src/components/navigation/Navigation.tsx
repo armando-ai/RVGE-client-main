@@ -63,6 +63,7 @@ export const Navigation = (props: any) => {
     };
   }, [socket]);
   function removeNotification(notification: any) {
+    
     setTimeout(() => {
       const array = [];
       for (let x = 0; x < notifications.length - 1; x++) {

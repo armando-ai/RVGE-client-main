@@ -459,6 +459,8 @@ const Auth = () => {
                 );
                 signUpUser.platforms = temp;
                 postUser(signUpUser);
+                setSignup("show-sign-in");
+                setPage(0);
               }}
             >
               Sign Up
