@@ -68,12 +68,12 @@ export const Navigation = (props: any) => {
     const array = [];
     for (let x = 0; x < notifications.length - 1; x++) {
       if (x !== 0) {
-        notification.top = x - 1;
+        notification[x].top = x - 1;
       } else {
-        notification.top = 0;
+        notification[x].top = 0;
       }
       if (notifications[x] === notification) {
-        notification.delete = true;
+        notification[x].delete = true;
       }
       notifications[x].animated = true;
 
