@@ -32,14 +32,18 @@ export const Navigation = (props: any) => {
     setChatRoom(data);
   }
   if (sendNotifications === false) {
-    socket.once("notifications", {});
-    socket.emit("joinNotifications", {});
-
     setSendNotifications(true);
   }
 
   const [notifications, setNotifications] = useState<any>([]);
   useEffect(() => {
+    socket.on("connection", (data: any) => {
+      console.log(data);
+      console.log(socket);
+      socket.removeAllListeners();
+      socket.once("notifications", {});
+      socket.once("joinNotifications", {});
+    });
     socket.on("createdRoom", (data: any) => {
       setChatRoom(data);
     });
