@@ -82,6 +82,8 @@ export const Navigation = (props: any) => {
           }
           return (
             <NotificationCard
+              delRoom={delRoom}
+              setRoom={setRoom}
               notification={notification}
               removeNotification={removeNotification}
               top={index * 100}
