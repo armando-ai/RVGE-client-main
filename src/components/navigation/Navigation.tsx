@@ -71,7 +71,7 @@ export const Navigation = (props: any) => {
       }
       setNotifications(array);
       setNotifications(notifications.filter((n: any) => n !== notification));
-    }, 3000);
+    }, 6000);
   }
   const activeChats = [{}];
   return (
