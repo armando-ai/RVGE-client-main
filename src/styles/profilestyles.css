@@ -296,7 +296,7 @@
   .goRight{
 
     animation: right 3s forwards;
-
+    animation-delay: 3s!important;
     transition: 0.7s;
   }
   @keyframes right {

@@ -33,8 +33,8 @@ const NotificationCard = (props: any) => {
           ? createCurrentRoom()
           : router.push("/rtrades");
       }}
-      className={`${props.top === 0 && "goRight"} ${
-        props.notification.animated === false && "goLeft"
+      className={`${props.top === 0 && "goRight "} ${
+        props.notification.animated === false && "goLeft "
       } fixed right-4 z-[9999] ${value} smooth mt-5 h-[10%] w-[24%] cursor-pointer  flex-col content-start justify-start overflow-hidden rounded-md bg-slate-400 p-[1%]`}
       style={{ top: `${props.top}px` }}
     >
