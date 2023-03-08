@@ -61,7 +61,12 @@ export const Navigation = (props: any) => {
     };
   }, []);
   function removeNotification(notification: any) {
-    setTimeout(() => {
+    setTimeout(async () => {
+      const updatedItems = notifications.map((item: any) => {
+        return { ...item, animated: false };
+      });
+
+      await setNotifications(updatedItems);
       setNotifications(notifications.filter((n: any) => n !== notification));
     }, 5000);
   }
