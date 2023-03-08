@@ -14,6 +14,7 @@ import ChatRoom from "src/features/chat/chatRoom";
 import { io } from "socket.io-client";
 import { useSocket } from "../socket/SocketContext";
 import NotificationCard from "src/features/chat/NotifcationCard";
+import { useSession } from "src/hooks";
 
 export const Navigation = (props: any) => {
   const [selected, setSelected] = useState("Home");
@@ -31,8 +32,25 @@ export const Navigation = (props: any) => {
     setChatRoom(data);
   }
   if (sendNotifications === false) {
-    socket.emit("notifications", {});
-    socket.emit("joinNotifications", {});
+    sendEmit();
+  }
+  async function sendEmit() {
+    const { data: session } = await useSession();
+
+    socket.emit(
+      "notifications",
+      {},
+      {
+        userId: session?.id,
+      }
+    );
+    socket.emit(
+      "joinNotifications",
+      {},
+      {
+        userId: session?.id,
+      }
+    );
 
     setSendNotifications(true);
   }
