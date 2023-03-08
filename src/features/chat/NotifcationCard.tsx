@@ -45,9 +45,9 @@ const NotificationCard = (props: any) => {
           <BellAlertIcon className="mr-auto h-7 w-7"></BellAlertIcon>
         )}
 
-        <div className="ml-auto h-full  w-[80%] text-start">
-          <h1 className="text-start">{props.notification.from}</h1>
-          <p className="text-start text-xs">
+        <div className="mr-auto h-full  w-[80%] text-start">
+          <h1 className="text-start text-2xl">{props.notification.from}</h1>
+          <p className="text-start text-lg">
             {props.notification.type.includes("chat")
               ? "Message: " + props.notification.message
               : "Has sent you a trade"}

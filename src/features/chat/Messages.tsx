@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import {
   ChevronUpIcon as ArrowUpIcon,
   ChatBubbleBottomCenterTextIcon,
+  FaceFrownIcon,
 } from "@heroicons/react/24/outline";
 import RoomCard from "./roomCard";
 import { useSocket } from "src/components/socket/SocketContext";
@@ -54,8 +55,8 @@ const Messages = (props: any) => {
         }}
         className=" w-full  cursor-pointer  overflow-hidden border-b-2 border-b-slate-900 p-[3%]"
       >
-        <h1 className="flex-row flex overflow-hidden">
-          Messaging
+        <h1 className="flex flex-row overflow-hidden">
+          Messages
           <ChatBubbleBottomCenterTextIcon className="ml-1 w-5" />
           <ArrowUpIcon
             className={`${
@@ -74,6 +75,12 @@ const Messages = (props: any) => {
             removeChat={removeChat}
           />
         ))}
+        {chats.length === 0 && (
+          <div className="h-full w-full">
+            <FaceFrownIcon className="mi-auto mt-[50%] w-10 text-slate-800"></FaceFrownIcon>
+            <p className="text-slate-800">NO New Friends BOO HOOO</p>
+          </div>
+        )}
       </div>
     </div>
   );
