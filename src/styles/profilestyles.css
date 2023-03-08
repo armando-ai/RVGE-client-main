@@ -284,18 +284,29 @@
     transition: 0.7s;
   }
   @keyframes left {
-    0%{
+    from{
       right:-25%;
     }
-    20%{
+  to{
       right:1.25em;
-    }
-    90%{
-      right:1.25em;
-    }
-    100%{
-      right:-25%;
     }
 
+
+  }
+  .goRight{
+
+    animation: right 6s forwards;
+
+    transition: 0.7s;
+  }
+  @keyframes right {
+    from{
+      right:1.25em;
+      opacity:0;
+    }
+    to{
+      right:-25%;
+      opacity:0;
+    }
 
   }

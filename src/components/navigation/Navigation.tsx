@@ -36,8 +36,21 @@ export const Navigation = (props: any) => {
     socket.emit("joinNotifications", {});
     setSendNotifications(true);
   }
-
   const [notifications, setNotifications] = useState<any>([]);
+  const elements = notifications.map(
+    (notification: { id: any; animated: boolean }, index: number) => {
+      return (
+        <NotificationCard
+          delRoom={delRoom}
+          setRoom={setRoom}
+          notification={notification}
+          removeNotification={removeNotification}
+          top={index * 100}
+        />
+      );
+    }
+  );
+
   useEffect(() => {
     socket.on("connect", (data: any) => {
       console.log("connected");
@@ -49,10 +62,12 @@ export const Navigation = (props: any) => {
     });
 
     socket.on("trades", (notification: any) => {
+      notification.animated = false;
       console.log(notification);
       setNotifications((prev: any) => [...prev, notification]);
     });
     socket.on("chats", (notification: any) => {
+      notification.animated = false;
       console.log(notification);
       setNotifications((prev: any) => [...prev, notification]);
     });
@@ -61,13 +76,13 @@ export const Navigation = (props: any) => {
     };
   }, [socket]);
   function removeNotification(notification: any) {
-    // const updatedItems = notifications.map((item: any) => {
-    //   return {
-    //     ...item,
-    //     animated: true,
-    //   };
-    // });
-    // setNotifications(updatedItems);
+    const array = [];
+    for (let x = 0; x < notifications.length - 1; x++) {
+      notifications[x].animated = true;
+      array.push(notifications[x]);
+    }
+    setNotifications(array);
+
     setTimeout(() => {
       setNotifications(notifications.filter((n: any) => n !== notification));
     }, 6000);
@@ -79,24 +94,7 @@ export const Navigation = (props: any) => {
       {chatRoom !== "" && chatRoom && (
         <ChatRoom delRoom={delRoom} room={chatRoom}></ChatRoom>
       )}
-      {notifications !== undefined &&
-        notifications.map(
-          (notification: { id: any; animated: boolean }, index: number) => {
-            console.log(notification);
-            if (index === notifications.length - 1) {
-              removeNotification(notifications.at(0));
-            }
-            return (
-              <NotificationCard
-                delRoom={delRoom}
-                setRoom={setRoom}
-                notification={notification}
-                removeNotification={removeNotification}
-                top={index * 100}
-              />
-            );
-          }
-        )}
+      {elements}
 
       <DesktopNavigation
         selected={selected}
