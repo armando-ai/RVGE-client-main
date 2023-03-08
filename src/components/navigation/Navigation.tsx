@@ -43,14 +43,18 @@ export const Navigation = (props: any) => {
     });
 
     socket.on("trades", (notification: any) => {
-      console.log(notification);
-      setNotifications((prev: any) => [...prev, notification]);
-      removeNotification(notification);
+      setTimeout(() => {
+        console.log(notification);
+        setNotifications((prev: any) => [...prev, notification]);
+        removeNotification(notification);
+      }, 1500);
     });
     socket.on("chats", (notification: any) => {
-      console.log(notification);
-      setNotifications((prev: any) => [...prev, notification]);
-      removeNotification(notification);
+      setTimeout(() => {
+        console.log(notification);
+        setNotifications((prev: any) => [...prev, notification]);
+        removeNotification(notification);
+      }, 1500);
     });
     return () => {
       socket.disconnect();
