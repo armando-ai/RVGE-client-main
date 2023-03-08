@@ -63,7 +63,7 @@ export const Navigation = (props: any) => {
   function removeNotification(notification: any) {
     setTimeout(async () => {
       const updatedItems = notifications.map((item: any) => {
-        return { ...item, animated: false };
+        return { ...item, animated: true };
       });
 
       await setNotifications(updatedItems);
