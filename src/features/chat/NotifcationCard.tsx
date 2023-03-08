@@ -3,11 +3,12 @@ import {
   ChatBubbleBottomCenterTextIcon,
 } from "@heroicons/react/24/outline";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect } from "react";
 import { getToken, request } from "src/utils";
 
 const NotificationCard = (props: any) => {
   const router = useRouter();
+
   const createCurrentRoom = async () => {
     await getToken();
     const data = await request("/getroom/" + props.notification.roomId, {
@@ -25,17 +26,30 @@ const NotificationCard = (props: any) => {
       props.setRoom(data);
     }, 50);
   };
-  const value = "top-[" + props.top + "px!important]";
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      props.removeNotification(props.notification);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [props.notification, props.removeNotification]);
+
+  const handleClick = () => {
+    if (props.notification.type.includes("chat")) {
+      createCurrentRoom();
+    } else {
+      router.push("/rtrades");
+    }
+  };
+
+  const value = "top-[" + top + "px!important]";
+
   return (
     <div
-      key={props.notification.id}
-      onClick={() => {
-        props.notification.type.includes("chat")
-          ? createCurrentRoom()
-          : router.push("/rtrades");
-      }}
-      className={`${props.className} goLeft  fixed right-4 z-[9999] ${value} mt-5 h-[10%] w-[24%] cursor-pointer  flex-col content-start justify-start overflow-hidden rounded-md bg-slate-400 p-[1%]`}
-      style={{ top: `${props.top}px` }}
+      onClick={handleClick}
+      className={` goLeft  fixed right-4 z-[9999] ${value} mt-5 h-[10%] w-[24%] cursor-pointer  flex-col content-start justify-start overflow-hidden rounded-md bg-slate-400 p-[1%]`}
+      style={{ top: `${top}px` }}
     >
       <div className="flex w-full flex-row overflow-hidden p-[1%]">
         {props.notification.type.includes("chat") ? (

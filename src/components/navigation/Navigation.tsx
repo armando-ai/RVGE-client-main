@@ -68,9 +68,13 @@ export const Navigation = (props: any) => {
       )}
 
       {notifications.map((notification: any, index: number) => {
-        if (index === notifications.length - 1) {
-          removeNotification(notifications.at(0));
-        }
+        useEffect(() => {
+          const timer = setTimeout(() => {
+            removeNotification(notification);
+          }, 5000);
+          return () => clearTimeout(timer);
+        }, [notification]);
+
         return (
           <NotificationCard
             key={notification.message + index}
