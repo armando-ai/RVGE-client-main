@@ -32,7 +32,7 @@ export const Navigation = (props: any) => {
     setChatRoom(data);
   }
   if (sendNotifications === false) {
-    socket.emit("notifications", {});
+    socket.once("notifications", {});
     socket.emit("joinNotifications", {});
 
     setSendNotifications(true);
@@ -43,7 +43,7 @@ export const Navigation = (props: any) => {
     socket.on("createdRoom", (data: any) => {
       setChatRoom(data);
     });
-    
+
     socket.on("trades", (notification: any) => {
       console.log(notification);
       setNotifications((prev: any) => [...prev, notification]);
