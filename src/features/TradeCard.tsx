@@ -19,7 +19,6 @@ const TradeCard = (props: any) => {
 
     const data = {
       userId: userId,
-      tradeId: props.tradeId,
     };
     // console.log(data);
     socket.emit("createRoom", data);
