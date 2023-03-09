@@ -49,16 +49,12 @@ export const Navigation = (props: any) => {
     });
 
     socket.on("trades", (notification: any) => {
-
       console.log(notification);
       setNotifications((prev: any) => [...prev, notification]);
-
     });
     socket.on("chats", (notification: any) => {
-
       console.log(notification);
       setNotifications((prev: any) => [...prev, notification]);
-
     });
     return () => {
       socket.off("connect");
@@ -78,8 +74,8 @@ export const Navigation = (props: any) => {
       )}
 
       {notifications.map((notification: any, index: number) => {
-        if(index===notifications.length-1){
-          removeNotification(notification);
+        if (index === notifications.length - 1) {
+          removeNotification(notification.at(0));
         }
         return (
           <NotificationCard
