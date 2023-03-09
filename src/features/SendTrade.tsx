@@ -88,6 +88,7 @@ const SendTrade = (props: any) => {
             body: {
               trade: {
                 games: selectedConsoles.map((obj: { id: any }) => obj.id),
+                chat: null,
               },
             },
           });
