@@ -60,11 +60,7 @@ export const Navigation = (props: any) => {
       socket.off("connect");
     };
   }, [socket]);
-  function removeNotification(notification: any) {
-    setTimeout(() => {
-      setNotifications(notifications.filter((n: any) => n !== notification));
-    }, 6000);
-  }
+
   const activeChats = [{}];
   return (
     <div>
@@ -74,15 +70,13 @@ export const Navigation = (props: any) => {
       )}
 
       {notifications.map((notification: any, index: number) => {
-        if (index === notifications.length - 1) {
-          removeNotification(notifications.at(0));
-        }
+
         return (
           <NotificationCard
             delRoom={delRoom}
             setRoom={setRoom}
             notification={notification}
-            removeNotification={removeNotification}
+    
             top={index * 100}
           />
         );
