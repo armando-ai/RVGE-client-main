@@ -22,6 +22,13 @@ const ChatRoom = (props: any) => {
     }
   };
   const socket = useSocket();
+  if (value.includes("") && props.room.messages === 0) {
+    if (props.room.trade.user.username.includes(props.room.users[0].username)) {
+      setValue(`Hi my name is ${props.room.users[0].username} `);
+    } else {
+      setValue(`Hi my name is ${props.room.trade.user.username} `);
+    }
+  }
 
   const handleInputChange = (event: any) => {
     setValue(event.target.value);

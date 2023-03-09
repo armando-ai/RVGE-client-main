@@ -55,7 +55,7 @@ const RoomCard = (props: any) => {
         // onMouseLeave={() => {
         //   setDel(false);
         // }}
-        className="smooth flex-row flex h-auto w-full cursor-pointer border-b-2 border-slate-500 p-[1%] hover:bg-slate-400 "
+        className="smooth flex h-[59.3688px] w-full cursor-pointer flex-row border-b-2 border-slate-500 p-[1%] hover:bg-slate-400 "
       >
         <Image
           className=" mr-1 rounded-full"

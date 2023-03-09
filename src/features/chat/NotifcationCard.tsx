@@ -40,12 +40,12 @@ const NotificationCard = (props: any) => {
     >
       <div className="flex w-full flex-row overflow-hidden ">
         {props.notification.type.includes("chat") ? (
-          <ChatBubbleBottomCenterTextIcon className=" absolute mr-auto h-7 w-7" />
+          <ChatBubbleBottomCenterTextIcon className=" mr-auto h-7 w-7" />
         ) : (
-          <BellAlertIcon className="absolute mr-auto h-7 w-7"></BellAlertIcon>
+          <BellAlertIcon className="mr-auto h-7 w-7"></BellAlertIcon>
         )}
 
-        <div className="relative top-[-2%] mr-auto w-[80%] text-start">
+        <div className="mr-auto relative top-[-2%] w-[80%] text-start">
           <h1 className="text-start text-[1.2em]">{props.notification.from}</h1>
           <p className="text-start text-[1em]">
             {props.notification.type.includes("chat")
