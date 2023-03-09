@@ -77,8 +77,8 @@ const Messages = (props: any) => {
         ))}
         {chats.length === 0 && (
           <div className="h-full w-full">
-            <FaceFrownIcon className="mi-auto mt-[50%] w-20 text-slate-800"></FaceFrownIcon>
-            <p className="mt-5 text-slate-800 mi-auto text-2xl">
+            <FaceFrownIcon className="mi-auto mt-[30%] w-20 text-slate-800"></FaceFrownIcon>
+            <p className="mi-auto mt-5 w-[80%] text-2xl text-slate-800">
               NO New Friends BOO HOOO
             </p>
           </div>
