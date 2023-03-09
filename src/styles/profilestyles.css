@@ -279,38 +279,27 @@
   }
   .goLeft{
 
-    animation: left 3s forwards;
+    animation: left 6s forwards;
 
     transition: 0.7s;
   }
   @keyframes left {
-    from{
+    0%{
       right:-25%;
       opacity:0;
     }
-  to{
-      right:1.25em;
-      opacity: 1;
-    }
-
-
-  }
-  .goRight{
-
-    animation: right 3s forwards;
-    animation-delay: 3s!important;
-    transition: 0.7s;
-  }
-  @keyframes right {
-    from{
+    20%{
       right:1.25em;
       opacity:1;
     }
-    to{
+    90%{
+      right:1.25em;
+      opacity:1;
+    }
+    100%{
       right:-25%;
-      height:0!important;
-      margin:0!important;
       opacity:0;
     }
+
 
   }

@@ -63,14 +63,9 @@ export const Navigation = (props: any) => {
     };
   }, [socket]);
   function removeNotification(notification: any) {
-    
+
     setTimeout(() => {
-      const array = [];
-      for (let x = 0; x < notifications.length - 1; x++) {
-        notifications[x].animated = true;
-        array.push(notifications[x]);
-      }
-      setNotifications(array);
+
       setNotifications(notifications.filter((n: any) => n !== notification));
     }, 6000);
   }
@@ -81,7 +76,7 @@ export const Navigation = (props: any) => {
       {chatRoom !== "" && chatRoom && (
         <ChatRoom delRoom={delRoom} room={chatRoom}></ChatRoom>
       )}
-      <div>
+
         {notifications.map((notification: any, index: number) => {
           if (index === notifications.length - 1) {
             removeNotification(notifications.at(0));
@@ -96,7 +91,7 @@ export const Navigation = (props: any) => {
             />
           );
         })}
-      </div>
+      
 
       <DesktopNavigation
         selected={selected}

@@ -25,6 +25,7 @@ const NotificationCard = (props: any) => {
       props.setRoom(data);
     }, 50);
   };
+  props.removeNotification(props.notification);
   const value = "top-[" + props.top + "px!important]";
   return (
     <div
@@ -33,10 +34,7 @@ const NotificationCard = (props: any) => {
           ? createCurrentRoom()
           : router.push("/rtrades");
       }}
-      className={`${props.top === 0 && "goRight"} ${
-        props.notification.animated === false && "goLeft"
-      } fixed right-4 z-[9999] ${value} smooth mt-5 max-h-full min-h-[10%] w-[24%] cursor-pointer  flex-col content-start justify-start overflow-hidden rounded-md bg-slate-400 p-[1%]`}
-      style={{ top: `${props.top}px` }}
+      className={`goLeft smooth absolute right-4  z-[9999] mt-5 max-h-full min-h-[10%] w-[24%] cursor-pointer  flex-col content-start justify-start overflow-hidden rounded-md bg-slate-400 p-[1%]`}
     >
       <div className="flex w-full flex-row overflow-hidden ">
         {props.notification.type.includes("chat") ? (
@@ -45,7 +43,7 @@ const NotificationCard = (props: any) => {
           <BellAlertIcon className="mr-auto h-7 w-7"></BellAlertIcon>
         )}
 
-        <div className="mr-auto relative top-[-2%] w-[80%] text-start">
+        <div className="relative top-[-2%] mr-auto w-[80%] text-start">
           <h1 className="text-start text-[1.2em]">{props.notification.from}</h1>
           <p className="text-start text-[1em]">
             {props.notification.type.includes("chat")
