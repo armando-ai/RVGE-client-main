@@ -202,14 +202,7 @@ const EditGames = (props: any) => {
               e.preventDefault();
               await getToken();
 
-              props.addGame({
-                name,
-                platform: platform.replaceAll(" ", "_"),
-                publisher,
-                condition,
-                year,
-              });
-              request("/games", {
+              const response: any = await request("/games", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
@@ -226,6 +219,14 @@ const EditGames = (props: any) => {
                     year,
                   },
                 },
+              });
+              props.addGame({
+                id: response.data.id,
+                name,
+                platform: platform.replaceAll(" ", "_"),
+                publisher,
+                condition,
+                year,
               });
               resetInputs();
             }}
