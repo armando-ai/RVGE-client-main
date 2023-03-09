@@ -78,9 +78,6 @@ export const Navigation = (props: any) => {
       )}
 
         {notifications.map((notification: any, index: number) => {
-          if (index === notifications.length - 1) {
-            removeNotification(notifications.at(0));
-          }
           return (
             <NotificationCard
               delRoom={delRoom}
@@ -91,7 +88,7 @@ export const Navigation = (props: any) => {
             />
           );
         })}
-      
+
 
       <DesktopNavigation
         selected={selected}
