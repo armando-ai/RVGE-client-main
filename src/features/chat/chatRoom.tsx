@@ -185,9 +185,10 @@ const ChatRoom = (props: any) => {
               id="txt"
               className="relative float-left mt-1  h-[3vh] w-[85%] resize-none overflow-hidden rounded-md p-[1%]  font-normal leading-5 tracking-wide"
               value={value}
+
               onChange={handleInputChange}
               onKeyDown={handleKeyDown}
-            />
+            >{value}</textarea>
             <PaperAirplaneIcon
               onClick={() => {
                 sendMessage(value);

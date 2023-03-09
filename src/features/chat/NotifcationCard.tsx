@@ -25,7 +25,7 @@ const NotificationCard = (props: any) => {
       props.setRoom(data);
     }, 50);
   };
-  
+
   const value = "top-[" + props.top + "px!important]";
   return (
     <div
@@ -34,7 +34,7 @@ const NotificationCard = (props: any) => {
           ? createCurrentRoom()
           : router.push("/rtrades");
       }}
-      className={`goLeft smooth absolute right-4  z-[9999] mt-5 max-h-full min-h-[10%] w-[24%] cursor-pointer  flex-col content-start justify-start overflow-hidden rounded-md bg-slate-400 p-[1%]`}
+      className={`goLeft smooth fixed right-4  z-[9999] mt-5 h-[10%] w-[24%] cursor-pointer  flex-col content-start justify-start overflow-hidden rounded-md bg-slate-400 p-[1%]`}
     >
       <div className="flex w-full flex-row overflow-hidden ">
         {props.notification.type.includes("chat") ? (
@@ -47,7 +47,7 @@ const NotificationCard = (props: any) => {
           <h1 className="text-start text-[1.2em]">{props.notification.from}</h1>
           <p className="text-start text-[1em]">
             {props.notification.type.includes("chat")
-              ? "Message: " + props.notification.message
+              ? "Message: " + props.notification.message.substr(0, 15)
               : "Has sent you a trade"}
           </p>
         </div>

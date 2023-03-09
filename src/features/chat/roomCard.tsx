@@ -68,7 +68,9 @@ const RoomCard = (props: any) => {
         <div className="mr-auto flex flex-col ">
           <h1 className="mr-auto">{props.chat.users[0].username}</h1>
           {props.chat.messages.length !== 0 && (
-            <p className="mr-auto text-xs">{props.chat.messages[0].message}</p>
+            <p className="mr-auto text-xs">
+              {props.chat.messages[0].message.substr(0, 10)}....
+            </p>
           )}
         </div>
         {del === false ? (
