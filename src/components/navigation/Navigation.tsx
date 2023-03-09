@@ -49,23 +49,23 @@ export const Navigation = (props: any) => {
     });
 
     socket.on("trades", (notification: any) => {
-      notification.animated = false;
+      
       console.log(notification);
       setNotifications((prev: any) => [...prev, notification]);
+      removeNotification(notification);
     });
     socket.on("chats", (notification: any) => {
-      notification.animated = false;
+
       console.log(notification);
       setNotifications((prev: any) => [...prev, notification]);
+      removeNotification(notification);
     });
     return () => {
       socket.off("connect");
     };
   }, [socket]);
   function removeNotification(notification: any) {
-
     setTimeout(() => {
-
       setNotifications(notifications.filter((n: any) => n !== notification));
     }, 6000);
   }
@@ -77,18 +77,17 @@ export const Navigation = (props: any) => {
         <ChatRoom delRoom={delRoom} room={chatRoom}></ChatRoom>
       )}
 
-        {notifications.map((notification: any, index: number) => {
-          return (
-            <NotificationCard
-              delRoom={delRoom}
-              setRoom={setRoom}
-              notification={notification}
-              removeNotification={removeNotification}
-              top={index * 100}
-            />
-          );
-        })}
-
+      {notifications.map((notification: any, index: number) => {
+        return (
+          <NotificationCard
+            delRoom={delRoom}
+            setRoom={setRoom}
+            notification={notification}
+            removeNotification={removeNotification}
+            top={index * 100}
+          />
+        );
+      })}
 
       <DesktopNavigation
         selected={selected}
